@@ -6,7 +6,7 @@ version = '1.0'
 setup(name='il.spdo',
       version=version,
       description="SPDO",
-      long_description=open("README.txt").read() + "\n" +
+      long_description=open("README.md").read() + "\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
       # Get more strings from
       # http://pypi.python.org/pypi?:action=list_classifiers

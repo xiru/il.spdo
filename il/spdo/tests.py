@@ -32,7 +32,7 @@ def test_suite():
 
         # Unit tests
         #doctestunit.DocFileSuite(
-        #    'README.txt', package='il.spdo',
+        #    'README.md', package='il.spdo',
         #    setUp=testing.setUp, tearDown=testing.tearDown),
 
         #doctestunit.DocTestSuite(
@@ -42,7 +42,7 @@ def test_suite():
 
         # Integration tests that use PloneTestCase
         #ztc.ZopeDocFileSuite(
-        #    'README.txt', package='il.spdo',
+        #    'README.md', package='il.spdo',
         #    test_class=TestCase),
 
         #ztc.FunctionalDocFileSuite(

@@ -1,0 +1,186 @@
+<html>
+<body>
+
+ <div metal:use-macro="here/manual_online/macros/menu" />
+
+ <h1>5. Protocolo de Documentos</h1>
+
+<div style="padding:5px;">
+<video tal:define="v string:http://ftp.interlegis.gov.br/pub/interlegis/produtos/spdo/spdo-2-protocolando-documentos.ogv"
+       width="480" height="360" controls="controls">
+  <source tal:attributes="src v" type="video/ogg" />
+  Seu navegador não suporta o formato de vídeo Ogg Vorbis. Instale o 
+  <a href="http://www.videolan.org/vlc/" target="_blank">VLC media player</a>
+  para <a tal:attributes="href v">assistir o vídeo</a>.
+</video> 
+</div>
+<div style="clear:both" />
+
+
+<P>	A principal
+funcionalidade do Sistema de Protocolo de Documentos – SPDO – é
+justamente o formulário de protocolo de documentos. O preenchimento
+desse formulário cria o protocolo e dá início ao processo de
+tramitação.</P>
+
+<P>	A seguir são
+descritos os campos desse formulário:</P>
+
+<OL>
+	<LI><P>Tipo de Protocolo:
+	pode ser Recebido, Expedido ou Interno;</P>
+	<LI><P>Tipo de Documento:
+	descreve o tipo de documento que será protocolado. É parametrizado
+	de acordo com o item #4.5 desse manual;</P>
+	<LI><P>Número do
+	Documento (opcional): identifica o número do documento. Alguns
+	tipos de documento são normalmente numerados (exemplo: notas
+	fiscais). Nesse campo é possível registrar essa numeração. Esse
+	campo não deve ser confundido com o número do protocolo,  sempre
+	gerado automaticamente.</P>
+	<LI><P>Data de Emissão
+	do Documento (opcional): identifica a data de emissão do documento.
+	Assim como a número do documento, algumas vezes a data de emissão
+	é uma informação bastante importante.</P>
+	<LI><P>Assunto: campo
+	textual, onde deve ser descrito o assunto do documento.</P>
+	<LI><P>Situação:
+	descreve a situação inicial do protocolo. É parametrizado de
+	acordo com o item #4.6 desse manual;</P>
+	<LI><P>Origem: identifica
+	a pessoa que é o remetente (origem) do documento que será
+	protocolado. Esse campo faz mais sentido nos protocolos recebidos e
+	expedidos, mas também deve ser preenchido nos protocolos internos,
+	onde a origem e destino costumam ser áreas internas da instituição.
+	Não deve ser confundido com áreas, mas para protocolos internos
+	pode fazer sentido convencionar que a pessoa de origem é o
+	responsável da área.</P>
+	<LI><P>Destino:
+	semelhante a Origem, mas identifica a pessoa que é o destinatário
+	(destino) do documento que será protocolado. Nos protocolos
+	Expedidos será possível registrar o tipo de entrega utilizado na
+	expedição do protocolo para cada uma das pessoas definidas como
+	destino.</P>
+	<LI><P>Observação
+	(opcional): campo textual, onde pode ser adicionada uma observação
+	sobre o documento que está sendo protocolado.</P>
+	<LI><P>Anexos (opcional):
+	campo de upload de múltiplos arquivos. Clique no botão “Browse”
+	e selecione quais arquivos você quer anexar ao protocolo. Requer
+	que o navegador tenha o plugin do Flash instalado. Trata-se de um
+	campo opcional pois o sistema também permite o protocolo de
+	documentos que não estejam em formato digital.</P>
+</OL>
+
+<P><IMG SRC="manual_online_protocolo_html_ma4aef3c.png" NAME="figura13" ALIGN=BOTTOM WIDTH=220 HEIGHT=388 BORDER=0></P>
+<P><IMG SRC="manual_online_protocolo_html_m40ac1443.png" NAME="figura14" ALIGN=BOTTOM WIDTH=567 HEIGHT=371 BORDER=0></P>
+
+<P>	Depois
+de preencher o formulário de adição de protocolo, um novo número
+de protocolo é gerado, com data e hora definidos de acordo com o
+horário do servidor SPDO. A imagem a seguir ilustra a interface de
+detalhes do protocolo.</P>
+
+<P ALIGN=CENTER><IMG SRC="manual_online_protocolo_html_m5954f42e.png" NAME="figura15" ALIGN=BOTTOM WIDTH=567 HEIGHT=373 BORDER=0></P>
+
+<P ALIGN=CENTER><IMG SRC="manual_online_protocolo_html_m56c65fb9.png" NAME="figura16" ALIGN=BOTTOM WIDTH=567 HEIGHT=226 BORDER=0></P>
+
+<P>	Nos
+detalhes do protocolo são exibidas todas as informações relevantes
+do protocolo, suas observações, anexos e respectiva tramitação.
+Entende-se por relevante o resultado da avaliação de um conjunto de
+regras que limitam as informações a serem exibidas, de acordo com o
+usuário que está consultando o protocolo.</P>
+
+<P>	Resumidamente,
+as regras de acesso a informações são as seguintes:</P>
+
+<OL>
+	<LI><P>Todo
+	usuário autenticado pode visualizar informações de um protocolo,
+	exceto aquelas que são potencialmente sensíveis.</P>
+	<P>Por
+	padrão, os usuários autenticados que não estão lotados em uma
+	área do organograma da instituição (papel “Usuario SPDO”)
+	podem visualizar todas as informações do protocolo, exceto as
+	observações, anexos e despachos da tramitação. Usuários lotados
+	(papel “Operador SPDO”) podem visualizar todas essas informações
+	quando o protocolo estiver tramitando na sua área de lotação.
+	Apenas usuários com o papel “Manager” ou “Gestor SPDO”
+	podem visualizar todas as informações dos protocolos. O papel
+	“Gestor SPDO” não confere nenhum direito adicional de alteração
+	de dados, apenas de visualização.
+	</P>
+	<LI><P>Um
+	link só é disponibilizado para um usuário caso ele tenha
+	permissão de acessar a página para onde esse link aponta. Essa
+	premissa é especialmente interessante, pois implica na omissão de
+	diversas partes da interface para aqueles usuários que não tem
+	permissão de acessá-las.</P>
+	<P>Como
+	exemplo, podemos citar que o link “Tramitar” (disponível no
+	menu superior, logo abaixo do número e data do protocolo) só é
+	disponibilizado para usuários lotados em uma área onde o protocolo
+	esteja tramitando e caso o protocolo não esteja em uma situação
+	final (exemplo: arquivado).</P>
+	<P>Outro
+	exemplo são os ícones de exclusão de pessoas de origem
+	(remetentes), pessoas de destino (destinatários), anexos e
+	observações. Como todo protocolo deve conter pelo menos um
+	remetente (pessoa de origem), só é possível excluir uma pessoa de
+	origem caso existam pelo menos duas pessoas de origem cadastradas (o
+	mesmo vale para destinatários). Anexos e observações possuem
+	validações de acesso ainda mais restritivas: um anexo ou uma
+	observação só podem ser excluídos pelo usuário que os criou e
+	caso o protocolo ainda não tenha tramitado para outra área. Se o
+	protocolo já tiver tramitado e um anexo ou observação precisar se
+	excluído (ou alterado, no caso de observação) apenas um usuário
+	com o papel “Manager” poderá fazê-lo.</P>
+	<P></P>
+	<LI><P>A
+	edição de pessoas de destino (destinatários) registra as
+	entregas, ou seja, a forma como os protocolos expedidos foram
+	efetivamente entregues (exemplo: pessoalmente, por e-mail, carta
+	registrada, SEDEX, etc). Não existe entrega para protocolos
+	Recebidos ou Internos e, nesses casos, a opção de edição não
+	estará disponível.</P>
+</OL>
+
+<P>	O
+controle de acesso a todas as opções do SPDO é efetuado através
+do módulo seguranca.py, disponível 
+<A target="_blank" HREF="http://colab.interlegis.leg.br/browser/publico/il.spdo/trunk/il/spdo/seguranca.py">aqui</A>.
+Apesar desse módulo implementar um complexo sistema de controle de
+permissões, seu entendimento é relativamente simples.</P>
+
+<P>	A
+seguir é demonstrada a edição de protocolos, interface onde é
+possível atualizar a situação do protocolo, assim como outras
+informações. A edição de um protocolo é restrita e só pode ser
+feita por usuários lotados na área onde o protocolo esteja
+tramitando.</P>
+
+<P>	É
+importante ressaltar que um protocolo não está tramitando em uma
+área até que ele seja recebido. Isso significa que um protocolo
+enviado por uma área e que ainda não tenha sido recebido por uma
+das áreas para qual o protocolo foi enviado, não poderá ser
+alterado. Nessa situação, a edição do protocolo, adição de
+observações, anexos ou novas tramitações só ocorre depois da
+área destino receber o protocolo ou da área de origem recuperá-lo.</P>
+
+<P ALIGN=CENTER><IMG SRC="manual_online_protocolo_html_m43647c1b.png" NAME="figura17" ALIGN=BOTTOM WIDTH=567 HEIGHT=498 BORDER=0></P>
+
+<P>	A
+seguir é demonstrada a consulta “Meus Protocolos”. Depois de
+adicionado, o protocolo passará a ser listado no menu “Meus
+Protocolos”. Essa consulta foi idealizada para listar todos os
+protocolos que merecem atenção do usuário, ou seja, aqueles que
+tenham sido criados pela área onde o usuário está lotado ou que
+tenham sido enviados por outras áreas e estejam tramitando na área
+do usuário.</P>
+
+<P ALIGN=CENTER><IMG SRC="manual_online_protocolo_html_m506e791.png" NAME="figura18" ALIGN=BOTTOM WIDTH=567 HEIGHT=335 BORDER=0></P>
+
+</BODY>
+</HTML>

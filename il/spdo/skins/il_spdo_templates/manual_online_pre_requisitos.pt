@@ -1,0 +1,25 @@
+<html>
+<body>
+
+ <div metal:use-macro="here/manual_online/macros/menu" />
+
+<H1>3. Pré-requisitos</H1>
+
+<P>Os pré-requisitos necessários para a
+utilização do SPDO são mínimos: um computador conectado a rede e
+com um navegador moderno (Mozilla Firefox, Google Chrome ou Internet
+Explorer).</P>
+
+<P>A utilização da funcionalidade de upload de múltiplo de anexos,
+assim como a exportação de listagens para os formatos CSV e PDF
+requer que o navegador tenha o plugin do Flash instalado. Caso o
+navegador utilizado não tenha o plugin do Flash instalado, essas
+funcionalidades não irão funcionar, mas o restante das
+funcionalidades do sistema continuarão funcionando normalmente.</P>
+
+<P>Os pré-requisitos necessários à instalação do SPDO estão descritos
+no “Relatório de Entrega  nº 4” e não serão abordados nesse
+documento.</P>
+
+</BODY>
+</HTML>

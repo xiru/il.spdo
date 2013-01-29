@@ -1,0 +1,83 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="il.spdo">
+
+<body>
+
+<metal:main fill-slot="main">
+    <tal:main-macro metal:define-macro="main">
+
+    <div tal:replace="structure provider:plone.abovecontenttitle" />
+
+    <h1 class="documentFirstHeading">Impressão de Etiquetas</h1>
+
+    <p class="documentDescription">Geração de PDF para impressão de etiquetas adesivas com códigos de barras.</p>
+
+    <div tal:replace="structure provider:plone.abovecontentbody" />
+
+    <form method="post" tal:attributes="action string:${here/portal_url}/${view/__name__}">
+    
+    <metal:block  use-macro="context/@@ploneform-macros/fields" />
+
+    <div class="field">
+      <label for="form-widgets-paginas" class="horizontal">
+        Protocolos Não Utilizados
+      </label>
+      
+      <div class="formHelp">Informe o número de folhas que você deseja
+      imprimir. Para cada número de protocolo não utilizado será
+      impressa uma etiqueta com um código de barras. Serão geradas
+      tantas etiquetas quanto forem necessárias para preencher
+      completamente a quantidade de páginas informada.</div>
+      
+      <input id="form-widgets-paginas" type="text" name="paginas:int" size="3"
+             tal:attributes="value python:request.get('paginas', '0')" />
+     </div>
+
+    <div class="field">
+      <label for="table-numeros-quantidades" class="horizontal">
+        Protocolos e Quantidades
+      </label>
+      
+      <div class="formHelp">Informe quais os números dos protocolos e
+      a respectiva quantidade de etiquetas a serem impressas.</div>
+
+      <table class="listing" id="table-numeros-quantidades">
+       <thead>
+         <tr>
+          <th>Número do Protocolo</th>
+          <th>Quantidade</th>
+         </tr> 
+       </thead>
+      <tbody>
+        <tr tal:repeat="i python:range(10)">
+          <td>
+	    <input type="text" size="18"
+	           tal:attributes="name string:numero${i};
+		                   value python:request.get('numero%d' % i, '')"/>
+          </td>
+          <td>
+	    <input type="text" size="3"
+	           tal:attributes="name string:quantidade${i}:int;
+		                   value python:request.get('quantidade%d' % i, '0')"/>
+          </td>
+        </tr>
+      </tbody>
+     </table>
+    </div>
+
+    <metal:block  use-macro="context/@@ploneform-macros/actions" />
+
+    </form>
+
+    <div tal:replace="structure provider:plone.belowcontentbody" />
+
+    </tal:main-macro>
+</metal:main>
+
+</body>
+</html>

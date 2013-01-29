@@ -1,0 +1,86 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="il.spdo">
+
+<body>
+
+<metal:main fill-slot="main">
+    <tal:main-macro metal:define-macro="main"
+     tal:define="sc nocall:context/@@spdo/check;
+                 addPessoa python:sc('acessar_add_pessoa')">
+
+    <div tal:replace="structure provider:plone.abovecontenttitle" />
+
+    <h1 class="documentFirstHeading">Listagem de Pessoas</h1>
+
+    <p class="documentDescription">Listagem da pessoas físicas e instituições.</p>
+
+    <p tal:condition="addPessoa"><a 
+       tal:attributes="href string:${view/add_url}">Adicionar</a></p>
+
+    <div tal:replace="structure provider:plone.abovecontentbody" />
+
+    <div class="field">
+      <table class="listing" id="table-list-pessoa" width="100%">
+       <thead>
+         <tr>
+          <th>Nome</th>
+          <th>Email</th>
+         </tr> 
+       </thead>
+      <tbody>
+        <tr tal:repeat="pessoa view/dados">
+          <td>
+             <a tal:content="pessoa/nome"
+                tal:attributes="href python:view.show_url(pessoa['id'])">
+             </a>
+          </td>
+          <td>
+            <span tal:replace="structure python:context.spamProtect(pessoa['email'])" />
+          </td>
+        </tr>
+      </tbody>
+     </table>
+    </div>
+
+    <script type="text/javascript">
+      $(document).ready( function () {
+        $('#table-list-pessoa').dataTable( {
+          "sDom": 'T<"clear">lfrtip',
+          "oTableTools": {
+          "sSwfPath": "copy_cvs_xls_pdf.swf",
+          "aButtons": [
+            {
+             "sExtends": "copy",
+             "sButtonText": "Copiar"
+            },
+            {
+              "sExtends": "csv",
+              "sButtonText": "CSV"
+            },
+            {
+              "sExtends": "pdf",
+              "sButtonText": "PDF",
+              "sPdfOrientation": "landscape",
+              "sPdfMessage": "Pessoas",
+            },
+            {
+              "sExtends": "print",
+              "sButtonText": "Imprimir"
+            },
+          ] }
+        } );
+      } );
+    </script>
+
+    <div tal:replace="structure provider:plone.belowcontentbody" />
+
+    </tal:main-macro>
+</metal:main>
+
+</body>
+</html>

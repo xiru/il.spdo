@@ -1,0 +1,25 @@
+<html>
+<body>
+
+ <div metal:define-macro="menu">
+
+  <h2>Sistema de Protocolo de Documentos - SPDO</h2>
+
+  <h3>Manual On-line</h3>
+
+  <ol style="display:block; float:left; width:250px;">
+    <li><a tal:attributes="href string:${here/portal_url}/manual_online_introducao">Introdução</a></li>
+    <li><a tal:attributes="href string:${here/portal_url}/manual_online_videos">Vídeos</a></li>
+    <li><a tal:attributes="href string:${here/portal_url}/manual_online_pre_requisitos">Pré-requisitos</a></li>
+    <li><a tal:attributes="href string:${here/portal_url}/manual_online_parametrizacao">Parametrização do Sistema</a></li>
+    <li><a tal:attributes="href string:${here/portal_url}/manual_online_protocolo">Protocolo de Documentos</a></li>
+    <li><a tal:attributes="href string:${here/portal_url}/manual_online_tramitacao">Tramitação de Protocolos</a></li>
+    <li><a tal:attributes="href string:${here/portal_url}/manual_online_etiquetas">Etiquetas com Código de Barras</a></li>
+    <li><a tal:attributes="href string:${here/portal_url}/manual_online_pesquisa">Pesquisa de Protocolos</a></li>
+    <li><a tal:attributes="href string:${here/portal_url}/manual_online_referencias_apensos">Referências e Apensos</a></li>
+  </ol>
+
+ </div>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+id: front-page
+title: Bem-vindo ao SPDO
+description: Parabéns! Você instalou o Sistema de Protocolo de Documentos com sucesso.
+subject: 
+relatedItems: 
+location: 
+language: pt-br
+effectiveDate: None
+expirationDate: None
+creation_date: 2011/12/15 12:00:24.811824 GMT-2
+modification_date: 2011/12/19 00:33:36.494515 GMT-2
+creators: admin
+contributors: 
+rights: 
+allowDiscussion: False
+excludeFromNav: False
+presentation: True
+tableContents: False
+Content-Type: text/html
+
+<p class="discreet">Caso você esteja visualizando este texto ao invés do conteúdo que esperava, o dono deste site acabou de instalar o SPDO. Por favor, não contate nossos grupos de discussão sobre este assunto.</p>
+<!-- 		@page { margin: 2cm } 		P { margin-bottom: 0.21cm } -->
+<p>O Sistema de Protocolo de Documentos (SPDO) automatiza o processo de protocolo de documentos das Casas Legislativas (ou de outras instituições que adotem o sistema), efetuando o registro dos documentos, seus anexos e respectiva tramitação. O SPDO é um software livre, com licença <a class="external-link" href="http://www.gnu.org/licenses/licenses.html#GPL">GNU GPL</a>.</p>
+<h2>Primeiros passos</h2>
+<p>Antes de iniciar a exploração de seu novo Sistema de Protocolo de Documentos, por favor siga os seguintes passos:</p>
+<ol>
+<li>Garanta que você está autenticado como administrador do site.        <span class="discreet">(você deve poder visualizar um link para configurações do site no canto inferior esquerdo, a última opção do menu "Tabelas Auxiliares")</span></li>
+<li><a href="@@mail-controlpanel">Indique um servidor de e-mail</a> <span class="discreet">(O SPDO utiliza este servidor SMTP para enviar lembretes de senhas e notificações de tramitação)</span></li>
+</ol>
+<h2>Conheça mais</h2>
+<p>Após os primeiros passos sugerimos que você continue explorando o SPDO e:</p>
+<ul>
+<li>Leia a <a class="external-link" href="http://colab.interlegis.gov.br/browser/il.spdo/trunk/docs">documentação do sistema</a>, especialmente os relatórios técnicos que descrevem os requisitos do sistema (casos de uso, modelos de dados, etc).</li>
+<li>Participe do <a class="external-link" href="http://colab.interlegis.gov.br/wiki">Grupo Interlegis de Tecnologia - GITEC</a>, assinando a <a class="external-link" href="http://listas.interlegis.gov.br/mailman/listinfo/">lista de discussão</a>. Colaborare com a comunidade, reportando como você utiliza o SPDO e aproveite para esclarecer suas dúvidas enquanto apoia na melhoria desse sistema.</li>
+</ul>
+<ul>
+<li>Descubra as tecnologias utilizadas no desenvolvimento do SPDO: a linguagem de programação <a class="external-link" href="http://www.python.org/">Python</a>, o servidor de aplicações <a class="external-link" href="http://www.zope.org/">Zope</a> e frameworks que fazem parte do projeto <a class="external-link" href="http://plone.org/">Plone</a>.</li>
+</ul>

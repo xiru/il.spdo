@@ -1,0 +1,20 @@
+<configure
+   xmlns="http://namespaces.zope.org/zope"
+   xmlns:browser="http://namespaces.zope.org/browser"
+   i18n_domain="il.spdo">
+
+  <interface
+    interface=".interfaces.IThemeSpecific"
+    type="zope.publisher.interfaces.browser.IBrowserSkinType"
+    name="spdo"
+    />
+
+  <browser:page
+      for="*"
+      name="spdo"
+      class=".views.SecurityCheckerView"
+      permission="zope.Public"
+      allowed_interface="il.spdo.interfaces.ISecurityChecker"
+      />
+
+</configure>

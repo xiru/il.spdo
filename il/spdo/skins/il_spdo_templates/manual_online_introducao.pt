@@ -1,0 +1,18 @@
+<html>
+<body>
+
+ <div metal:use-macro="here/manual_online/macros/menu" />
+
+<H1>1. Introdução</H1>
+
+<P>Esse documento consiste do Manual do Usuário, destinado àqueles que irão
+utilizar o sistema.</P>
+
+<P>Esse manual assumirá que o leitor esteja familiarizado com a utilização
+de aplicações para a internet e não cobrirá aspectos relacionados
+com os requisitos, implementação e instalação do sistema, pois
+todos esses temas já foram devidamente abordados em relatórios
+anteriores.</P>
+
+</BODY>
+</HTML>

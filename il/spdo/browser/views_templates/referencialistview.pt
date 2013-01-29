@@ -1,0 +1,96 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="il.spdo">
+
+<body>
+
+<metal:main fill-slot="main">
+    <tal:main-macro metal:define-macro="main"
+     tal:define="sc nocall:context/@@spdo/check;
+                 addReferencia python:sc('acessar_add_referencia', protocolo_id=request.protocolo_id);
+                 removeReferencia python:sc('acessar_remove_referencia', protocolo_id=request.protocolo_id)">
+
+    <div tal:replace="structure provider:plone.abovecontenttitle" />
+
+    <h1 class="documentFirstHeading">Listagem dos Referências</h1>
+
+    <p class="documentDescription">Protocolo: <a 
+       tal:attributes="href string:${view/dados_protocolo/url}"
+       tal:content="view/dados_protocolo/numero"></a> de <span
+       tal:replace="view/dados_protocolo/data_protocolo" /></p>
+
+    <p tal:condition="addReferencia"><a 
+       tal:attributes="href string:${here/portal_url}/@@add-referencia?protocolo_id=${view/dados_protocolo/protocolo_id}">Adicionar</a></p>
+
+    <div tal:replace="structure provider:plone.abovecontentbody" />
+
+    <div>
+      <table class="listing" id="table-list-referencia" width="100%">
+       <thead>
+         <tr>
+          <th>Número</th>
+          <th>Data</th>
+          <th>Assunto</th>
+          <th>Tipo de Documento</th>
+          <th>Situação</th>
+          <th tal:condition="removeReferencia"></th>
+         </tr> 
+       </thead>
+      <tbody>
+        <tr tal:repeat="referencia view/dados">
+          <td><a tal:content="referencia/numero"
+                 tal:attributes="href python:view.show_url(referencia['referencia_id'], 'protocolo')"></a>
+          </td>
+          <td tal:content="referencia/data_protocolo"></td>
+          <td tal:content="referencia/assunto"></td>
+          <td tal:content="referencia/tipodocumento"></td>
+          <td tal:content="referencia/situacao"></td>
+          <td tal:condition="removeReferencia"><a 
+              tal:attributes="href referencia/url-remove"><img
+              src="icone-remove.png" border="0" /></a></td>
+        </tr>
+      </tbody>
+     </table>     
+    </div>
+
+    <script type="text/javascript">
+      $(document).ready( function () {
+        $('#table-list-referencia').dataTable( {
+          "sDom": 'T<"clear">lfrtip',
+          "oTableTools": {
+          "sSwfPath": "copy_cvs_xls_pdf.swf",
+          "aButtons": [
+            {
+             "sExtends": "copy",
+             "sButtonText": "Copiar"
+            },
+            {
+              "sExtends": "csv",
+              "sButtonText": "CSV"
+            },
+            {
+              "sExtends": "pdf",
+              "sButtonText": "PDF",
+              "sPdfOrientation": "landscape",
+              "sPdfMessage": "Referências",
+            },
+            {
+              "sExtends": "print",
+              "sButtonText": "Imprimir"
+            },
+          ] }
+        } );
+      } );
+    </script>
+
+    <div tal:replace="structure provider:plone.belowcontentbody" />
+
+    </tal:main-macro>
+</metal:main>
+
+</body>
+</html>

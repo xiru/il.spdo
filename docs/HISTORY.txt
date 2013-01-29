@@ -1,0 +1,14 @@
+Changelog
+=========
+
+1.0.1 (2012-02-08)
+
+- Novo logotipo, contribuição de Davi Lima <davilima6@gmail.com> e Bruno Procópio <brunoip@gmail.com>
+- Correção de erros de digitação (typos) na página inicial, botão cadastrar, etc.
+- Novo de Manual On-line, sensível ao contexto.
+
+1.0 (2011-12-19)
+----------------
+
+- Versão inicial, com todas as funcionalidades especificadas.
+

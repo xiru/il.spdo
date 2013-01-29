@@ -1,0 +1,90 @@
+<html>
+<body>
+
+ <div metal:use-macro="here/manual_online/macros/menu" />
+
+<h1>8. Pesquisa de Protocolos</H1>
+
+<div style="padding:5px;">
+<video tal:define="v string:http://ftp.interlegis.gov.br/pub/interlegis/produtos/spdo/spdo-5-pesquisa-referencias-apensos.ogv"
+       width="480" height="360" controls="controls">
+  <source tal:attributes="src v" type="video/ogg" />
+  Seu navegador não suporta o formato de vídeo Ogg Vorbis. Instale o 
+  <a href="http://www.videolan.org/vlc/" target="_blank">VLC media player</a>
+  para <a tal:attributes="href v">assistir o vídeo</a>.
+</video> 
+</div>
+<div style="clear:both" />
+
+<P>	Outra
+funcionalidade importante do Sistema de Protocolo de Documentos –
+SPDO – é a pesquisa de protocolos, planejada para permitir o
+acompanhamento dos protocolos nos mais variados cenários.</P>
+
+<P>	A
+pesquisa de protocolos pode ser realizada utilizando a opção
+“Pesquisar Protocolos” na portlet “Menu Principal”. Essa
+pesquisa suporta os seguintes filtros:</P>
+
+<OL>
+	<LI><P>Tipo de Protocolo:
+	pode ser Recebido, Expedido ou Interno;</P>
+	<LI><P>Tipo
+	de Documento: descreve o tipo de documento a ser pesquisado. É
+	parametrizado de acordo com o item #4.5 desse manual;</P>
+	<LI><P>Assunto: busca
+	textual no assunto dos protocolos;</P>
+	<LI><P>Situação:
+	descreve a situação do protocolo a ser pesquisado. É
+	parametrizado de acordo com o item #4.6 desse manual;</P>
+	<LI><P>Origem: busca
+	textual no nome da pessoa remetente (origem). Assim como descrito no
+	item #5.7 desse manual, não deve ser confundido com áreas;</P>
+	<LI><P>Destino:
+	busca textual no nome da pessoa destinatário (destino). Assim como
+	descrito no item #5.8 desse manual, não deve ser confundido com
+	áreas;</P>
+	<LI><P>Área:
+	permite a pesquisa de protocolos que estejam tramitando em uma
+	determinada área. Quanto utilizado juntamente com outros filtros,
+	permite pesquisar cenários como: “quais protocolos recebidos
+	possuem situação 'em análise' e tramitam em uma determinada área”
+	ou ainda “quais protocolos internos sobre férias tramitam na área
+	de recursos humanos”;</P>
+	<LI><P>Tempo
+	Inativo: permite a pesquisa de protocolos que estejam tramitando por
+	pelo menos um determinado tempo. Quando utilizado juntamente com o
+	filtro área, permite pesquisar cenários como: “quais os
+	protocolos que estão tramitando em uma determinada área a mais de
+	10 dias” indicando um provável problema (lentidão) na
+	tramitação.</P>
+</OL>
+
+<P>	A
+pesquisa de protocolos retorna apenas os resultados que atendem a
+todos os filtros selecionados. Caso nenhum resultado seja encontrado
+ao realizar uma pesquisa, desligue alguns filtros, selecionando a
+opção “vazio” ou deixando o campo em branco. Por outro lado,
+caso a pesquisa retorne muitos resultados, utilize mais filtros,
+tornando a pesquisa mais específica.</P>
+
+<P>	A
+seguir é ilustrada a interface de pesquisa de protocolos, dando
+destaque aos diversos tipos de filtros que podem ser utilizados.
+Perceba que os filtros estão incluídos em uma área identificada
+com um sinal de menos (-) e a palavra “Pesquisar”. Clicando nesse
+sinal, os filtros são escondidos, restando apenas os resultados da
+pesquisa. 
+</P>
+
+<P ALIGN=CENTER><IMG SRC="manual_online_pesquisa_html_m3edf61f.png" NAME="figura31" ALIGN=BOTTOM WIDTH=567 HEIGHT=375 BORDER=0></P>
+<P ALIGN=CENTER><IMG SRC="manual_online_pesquisa_html_m6e471b1f.png" NAME="figura32" ALIGN=BOTTOM WIDTH=567 HEIGHT=229 BORDER=0></P>
+
+<P>	A
+seguir é ilustrado o resultado da pesquisa realizada (que sempre
+aparece na parte inferior da página), com os filtros escondidos.</P>
+
+<P ALIGN=CENTER><IMG SRC="manual_online_pesquisa_html_m6d5c9e52.png" NAME="figura33" ALIGN=BOTTOM WIDTH=567 HEIGHT=271 BORDER=0></P>
+
+</BODY>
+</HTML>

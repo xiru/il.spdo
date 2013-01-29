@@ -1,0 +1,102 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="il.spdo">
+
+<body>
+
+<metal:main fill-slot="main">
+    <tal:main-macro metal:define-macro="main">
+
+    <div tal:replace="structure provider:plone.abovecontenttitle" />
+
+    <h1 class="documentFirstHeading">Pesquisa Protocolos</h1>
+
+    <p class="documentDescription">Utilize o formulário a seguir para
+    pesquisar por tipo de protocolo, tipo de documento, assunto,
+    situação, origem, destino, área ou ainda pelo tempo que o
+    protocolo está sem tramitar.</p>
+
+    <div tal:replace="structure provider:plone.abovecontentbody" />
+
+    <form method="post" tal:attributes="action string:${here/portal_url}/${view/__name__}">
+
+    <dl class="collapsible">
+      <dt class="collapsibleHeader">Pesquisar</dt>
+      <dd class="collapsibleContent">
+	<metal:block  use-macro="context/@@ploneform-macros/fields" />
+	<metal:block  use-macro="context/@@ploneform-macros/actions" />
+      </dd>
+    </dl>
+
+    <div tal:condition="view/dados">
+      <table class="listing" id="table-search-protocolo" width="100%">
+       <thead>
+         <tr>
+          <th>Número</th>
+          <th>Data</th>
+          <th>Assunto</th>
+          <th>Tipo de Documento</th>
+          <th>Situação</th>
+         </tr> 
+       </thead>
+      <tbody>
+        <tr tal:repeat="protocolo view/dados">
+          <td><a tal:content="protocolo/numero"
+                 tal:attributes="href protocolo/url"></a>
+          </td>
+          <td tal:content="protocolo/data_protocolo"></td>
+          <td tal:content="protocolo/assunto"></td>
+          <td tal:content="protocolo/tipodocumento"></td>
+          <td tal:content="protocolo/situacao"></td>
+        </tr>
+      </tbody>
+     </table>
+    </div>
+
+    </form>
+
+    <p tal:condition="not: view/dados">
+      Nenhum protocolo encontrado.
+    </p>
+
+    <script type="text/javascript">
+      $(document).ready( function () {
+        $('#table-search-protocolo').dataTable( {
+          "sDom": 'T<"clear">lfrtip',
+          "oTableTools": {
+          "sSwfPath": "copy_cvs_xls_pdf.swf",
+          "aButtons": [
+            {
+             "sExtends": "copy",
+             "sButtonText": "Copiar"
+            },
+            {
+              "sExtends": "csv",
+              "sButtonText": "CSV"
+            },
+            {
+              "sExtends": "pdf",
+              "sButtonText": "PDF",
+              "sPdfOrientation": "landscape",
+              "sPdfMessage": "Pesquisar Protocolos",
+            },
+            {
+              "sExtends": "print",
+              "sButtonText": "Imprimir"
+            },
+          ] }
+        } );
+      } );
+    </script>
+
+    <div tal:replace="structure provider:plone.belowcontentbody" />
+
+    </tal:main-macro>
+</metal:main>
+
+</body>
+</html>

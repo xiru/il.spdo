@@ -1,0 +1,103 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="il.spdo">
+
+<body>
+
+<metal:main fill-slot="main">
+    <tal:main-macro metal:define-macro="main"
+     tal:define="sc nocall:context/@@spdo/check;
+                 showPessoa python:sc('acessar_show_pessoa');
+                 addNotificacao python:sc('acessar_add_notificacao');
+                 removeNotificacao python:sc('acessar_remove_notificacao')">
+
+    <div tal:replace="structure provider:plone.abovecontenttitle" />
+
+    <h1 class="documentFirstHeading">Listagem das Notificações</h1>
+
+    <p class="documentDescription"
+       tal:condition="showPessoa"><a
+       tal:attributes="href string:${view/dados_pessoa/url}"
+       tal:content="view/dados_pessoa/nome"></a> &lt; <span 
+       tal:replace="structure python:context.spamProtect(view.dados_pessoa['email'])" /> &gt; </p>
+
+    <p class="documentDescription"
+       tal:condition="not: showPessoa"><span
+       tal:content="view/dados_pessoa/nome"></span> &lt; <span 
+       tal:replace="structure python:context.spamProtect(view.dados_pessoa['email'])" /> &gt; </p>
+
+    <p tal:condition="addNotificacao"><a 
+       tal:attributes="href string:${view/add_url}">Adicionar</a></p>
+
+    <div tal:replace="structure provider:plone.abovecontentbody" />
+
+    <div>
+      <table class="listing" id="table-list-notificacao" width="100%">
+       <thead>
+         <tr>
+          <th>Número</th>
+          <th>Data</th>
+          <th>Assunto</th>
+          <th>Tipo de Documento</th>
+          <th>Situação</th>
+          <th tal:condition="removeNotificacao"></th>
+         </tr> 
+       </thead>
+      <tbody>
+        <tr tal:repeat="notificacao view/dados">
+          <td><a tal:content="notificacao/numero"
+                 tal:attributes="href python:view.show_url(notificacao['protocolo_id'], 'protocolo')"></a>
+          </td>
+          <td tal:content="notificacao/data_protocolo"></td>
+          <td tal:content="notificacao/assunto"></td>
+          <td tal:content="notificacao/tipodocumento"></td>
+          <td tal:content="notificacao/situacao"></td>
+          <td tal:condition="removeNotificacao"><a 
+              tal:attributes="href notificacao/url-remove"><img
+	      src="icone-remove.png" border="0" /></a></td>
+        </tr>
+      </tbody>
+     </table>     
+    </div>
+
+    <script type="text/javascript">
+      $(document).ready( function () {
+        $('#table-list-notificacao').dataTable( {
+          "sDom": 'T<"clear">lfrtip',
+          "oTableTools": {
+          "sSwfPath": "copy_cvs_xls_pdf.swf",
+          "aButtons": [
+            {
+             "sExtends": "copy",
+             "sButtonText": "Copiar"
+            },
+            {
+              "sExtends": "csv",
+              "sButtonText": "CSV"
+            },
+            {
+              "sExtends": "pdf",
+              "sButtonText": "PDF",
+              "sPdfOrientation": "landscape",
+              "sPdfMessage": "Notificações",
+            },
+            {
+              "sExtends": "print",
+              "sButtonText": "Imprimir"
+            },
+          ] }
+        } );
+      } );
+    </script>
+
+    <div tal:replace="structure provider:plone.belowcontentbody" />
+
+    </tal:main-macro>
+</metal:main>
+
+</body>
+</html>

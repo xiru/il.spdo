@@ -1,0 +1,84 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="il.spdo">
+
+<body>
+
+<metal:main fill-slot="main">
+    <tal:main-macro metal:define-macro="main">
+
+    <div tal:replace="structure provider:plone.abovecontenttitle" />
+
+    <h1 class="documentFirstHeading">Listagem de Fluxos de Tramitação</h1>
+
+    <p class="documentDescription">Listagem dos fluxos de tramitação e de seus respectivos tipos de documento.</p>
+
+    <p><a tal:attributes="href string:${view/add_url}">Adicionar</a></p>
+
+    <div tal:replace="structure provider:plone.abovecontentbody" />
+
+    <div>
+      <table class="listing" id="table-list-fluxo" width="100%">
+       <thead>
+         <tr>
+          <th>Nome</th>
+          <th>Tipo de Protocolo</th>
+          <th>Tipo de Documento</th>
+          <th>Flexível?</th>
+          <th></th>
+         </tr> 
+       </thead>
+      <tbody>
+        <tr tal:repeat="fluxo view/dados">
+          <td><a tal:attributes="href python:view.show_url(fluxo['id'])"
+                 tal:content="fluxo/nome"></a></td>
+          <td tal:content="fluxo/tipoprotocolo"></td>
+          <td tal:content="fluxo/tipodocumento"></td>
+          <td tal:content="python:fluxo['flexivel'] and 'X' or None"></td>
+          <td><a tal:attributes="href fluxo/url-transicao">Listar Transições</a></td>
+        </tr>
+      </tbody>
+     </table>
+    </div>
+
+    <script type="text/javascript">
+      $(document).ready( function () {
+        $('#table-list-fluxo').dataTable( {
+          "sDom": 'T<"clear">lfrtip',
+          "oTableTools": {
+          "sSwfPath": "copy_cvs_xls_pdf.swf",
+          "aButtons": [
+            {
+             "sExtends": "copy",
+             "sButtonText": "Copiar"
+            },
+            {
+              "sExtends": "csv",
+              "sButtonText": "CSV"
+            },
+            {
+              "sExtends": "pdf",
+              "sButtonText": "PDF",
+              "sPdfOrientation": "landscape",
+              "sPdfMessage": "Fluxos de Tramitação",
+            },
+            {
+              "sExtends": "print",
+              "sButtonText": "Imprimir"
+            },
+          ] }
+        } );
+      } );
+    </script>
+
+    <div tal:replace="structure provider:plone.belowcontentbody" />
+
+    </tal:main-macro>
+</metal:main>
+
+</body>
+</html>

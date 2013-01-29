@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<metadata>
+  <version>1000</version>
+    <dependencies>
+      <dependency>profile-collective.saconnect:default</dependency>
+      <dependency>profile-plone.app.z3cform:default</dependency>
+      <dependency>profile-plone.app.drafts:default</dependency>
+      <dependency>profile-plone.formwidget.autocomplete:default</dependency>
+    </dependencies>
+</metadata>

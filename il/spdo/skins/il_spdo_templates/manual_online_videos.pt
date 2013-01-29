@@ -1,0 +1,29 @@
+<html>
+<body>
+
+ <div metal:use-macro="here/manual_online/macros/menu" />
+
+<H1>2. Vídeos</H1>
+
+<P>O Sistema de Protocolo de Documentos – SPDO - optou por
+disponibilizar vídeos explicativos, demonstrando na prática a
+parametrização e utilização do sistema.</P>
+
+<P>Todos os vídeos podem ser obtidos no seguinte link:</P>
+
+<P><A target="_blank" 
+HREF="http://colab.interlegis.gov.br/wiki/SPDO">http://colab.interlegis.gov.br/wiki/SPDO</A></P>
+
+<P>Os vídeos foram gravados utilizando o software <A target="_blank" 
+HREF="http://recordmydesktop.sourceforge.net/about.php">recordmydesktop</A>,
+em um computador Ubuntu Linux 10.04 LTS Desktop, com o navegador
+Mozilla Firefox versão 9.0.1, totalizando aproximadamente 2 horas de
+duração. Os vídeos podem ser assistidos utilizando o navegador
+Mozilla Firefox, Google Chrome ou ainda o <A target="_blank" 
+HREF="http://www.videolan.org/vlc/">VLC Media Player</A>,
+em qualquer sistema operacional moderno.</P>
+
+<P>Recomenda-se que o usuário assista todos os vídeos antes de ler o restante desse manual.</P>
+
+</BODY>
+</HTML>

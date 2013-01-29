@@ -1,0 +1,90 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="il.spdo">
+
+<body>
+
+<metal:main fill-slot="main">
+    <tal:main-macro metal:define-macro="main">
+
+    <div tal:replace="structure provider:plone.abovecontenttitle" />
+
+    <h1 class="documentFirstHeading">Listagem das Áreas</h1>
+
+    <p class="documentDescription">Listagem das áreas do organograma
+    da instituição.</p>
+
+    <p><a tal:attributes="href string:${view/add_url}">Adicionar</a></p>
+
+    <div tal:replace="structure provider:plone.abovecontentbody" />
+
+    <div>
+      <table class="listing" id="table-list-area" width="100%">
+       <thead>
+         <tr>
+          <th>Sigla</th>
+          <th>Nome</th>
+          <th>Sigla da Chefia</th>
+          <th>Nome da Chefia</th>
+         </tr> 
+       </thead>
+      <tbody>
+        <tr tal:repeat="area view/dados">
+          <td><a tal:content="area/sigla"
+                 tal:attributes="href python:view.show_url(area['id'])"></a>
+	  </td>
+          <td><a tal:content="area/nome"
+                 tal:attributes="href python:view.show_url(area['id'])"></a>
+	  </td>
+          <td><a tal:content="area/chefia_sigla"
+                 tal:attributes="href python:view.show_url(area['chefia_id'])"></a>
+	  </td>
+          <td><a tal:content="area/chefia_nome"
+                 tal:attributes="href python:view.show_url(area['chefia_id'])"></a>
+	  </td>
+        </tr>
+      </tbody>
+     </table>     
+    </div>
+
+    <script type="text/javascript">
+      $(document).ready( function () {
+        $('#table-list-area').dataTable( {
+          "sDom": 'T<"clear">lfrtip',
+          "oTableTools": {
+          "sSwfPath": "copy_cvs_xls_pdf.swf",
+          "aButtons": [
+            {
+             "sExtends": "copy",
+             "sButtonText": "Copiar"
+            },
+            {
+              "sExtends": "csv",
+              "sButtonText": "CSV"
+            },
+            {
+              "sExtends": "pdf",
+              "sButtonText": "PDF",
+              "sPdfOrientation": "landscape",
+              "sPdfMessage": "Áreas",
+            },
+            {
+              "sExtends": "print",
+              "sButtonText": "Imprimir"
+            },
+          ] }
+        } );
+      } );
+    </script>
+
+    <div tal:replace="structure provider:plone.belowcontentbody" />
+
+    </tal:main-macro>
+</metal:main>
+
+</body>
+</html>

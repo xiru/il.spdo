@@ -1,0 +1,44 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      tal:omit-tag="">
+
+<metal:block define-macro="portlet">
+
+<tal:block define="sc nocall:context/@@spdo/check"
+           condition="python:sc('acessar_envio_tramite') or sc('acessar_recebimento_tramite') or sc('acessar_recebimento_tramite_barra') or sc('acessar_recuperacao_tramite')">
+
+<dl class="portlet portletMenu"
+    i18n:domain="plone">
+
+    <dt class="portletHeader">
+        Tramitação
+    </dt>
+
+    <dd class="portletItem"
+        tal:condition="python:sc('acessar_envio_tramite')">
+      <a tal:attributes="href string:${here/portal_url}/@@envio-tramite">Enviar</a>
+    </dd>
+
+    <dd class="portletItem"
+        tal:condition="python:sc('acessar_recebimento_tramite')">
+      <a tal:attributes="href string:${here/portal_url}/@@recebimento-tramite">Receber</a>
+    </dd>
+
+    <dd class="portletItem"
+        tal:condition="python:sc('acessar_recebimento_tramite_barra')">
+      <a tal:attributes="href string:${here/portal_url}/@@recebimento-tramite-barra">Receber (Código de Barras)</a>
+    </dd>
+
+    <dd class="portletItem"
+        tal:condition="python:sc('acessar_recuperacao_tramite')">
+      <a tal:attributes="href string:${here/portal_url}/@@recuperacao-tramite">Recuperar</a>
+    </dd>
+
+</dl>
+
+</tal:block>
+
+</metal:block>
+
+</html>

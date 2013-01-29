@@ -1,0 +1,26 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:pas="http://namespaces.zope.org/pluggableauthservice"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="il.spdo">
+
+    <five:registerClass
+        class=".pas.SPDOPASPlugin"
+        meta_type="SPDOPASPlugin"
+        permission="zope2.ViewManagementScreens"
+        addview="il-spdo-pasplugin"
+        />
+
+    <pas:registerMultiPlugin
+        meta_type="SPDOPASPlugin"
+        />
+
+    <browser:page
+        name="il-spdo-pasplugin"
+        for="zope.browser.interfaces.IAdding"
+        class=".pas.AddForm"
+        permission="zope2.ViewManagementScreens"
+        />
+
+</configure>

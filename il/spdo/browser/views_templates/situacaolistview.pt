@@ -1,0 +1,80 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="il.spdo">
+
+<body>
+
+<metal:main fill-slot="main">
+    <tal:main-macro metal:define-macro="main">
+
+    <div tal:replace="structure provider:plone.abovecontenttitle" />
+
+    <h1 class="documentFirstHeading">Listagem de Situações</h1>
+
+    <p class="documentDescription">Listagem das situações nas quais os protocolos podem ser classificados.</p>
+
+    <p><a tal:attributes="href string:${view/add_url}">Adicionar</a></p>
+
+    <div tal:replace="structure provider:plone.abovecontentbody" />
+
+    <div>
+      <table class="listing" id="table-list-situacao" width="100%">
+       <thead>
+         <tr>
+          <th>Nome</th>
+          <th>Inicial</th>
+          <th>Final</th>
+         </tr> 
+       </thead>
+      <tbody>
+        <tr tal:repeat="situacao view/dados">
+          <td><a tal:attributes="href python:view.show_url(situacao['id'])"
+                 tal:content="situacao/nome"></a></td>
+          <td tal:content="python:situacao['inicial'] and 'X' or None"></td>
+          <td tal:content="python:situacao['final'] and 'X' or None"></td>
+        </tr>
+      </tbody>
+     </table>     
+    </div>
+
+    <script type="text/javascript">
+      $(document).ready( function () {
+        $('#table-list-situacao').dataTable( {
+          "sDom": 'T<"clear">lfrtip',
+          "oTableTools": {
+          "sSwfPath": "copy_cvs_xls_pdf.swf",
+          "aButtons": [
+            {
+             "sExtends": "copy",
+             "sButtonText": "Copiar"
+            },
+            {
+              "sExtends": "csv",
+              "sButtonText": "CSV"
+            },
+            {
+              "sExtends": "pdf",
+              "sButtonText": "PDF",
+              "sPdfOrientation": "landscape",
+              "sPdfMessage": "Situações",
+            },
+            {
+              "sExtends": "print",
+              "sButtonText": "Imprimir"
+            },
+          ] }
+        } );
+      } );
+    </script>
+
+    <div tal:replace="structure provider:plone.belowcontentbody" />
+
+    </tal:main-macro>
+</metal:main>
+
+</body>
+</html>

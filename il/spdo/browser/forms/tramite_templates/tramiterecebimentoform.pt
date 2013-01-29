@@ -1,0 +1,68 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="il.spdo">
+
+<body>
+
+<metal:main fill-slot="main">
+    <tal:main-macro metal:define-macro="main">
+
+    <div tal:replace="structure provider:plone.abovecontenttitle" />
+
+    <h1 class="documentFirstHeading">Tramitação de Protocolos - Recebimento</h1>
+
+    <p class="documentDescription">Selecione os protocolos que você deseja receber.</p>
+
+    <div tal:replace="structure provider:plone.abovecontentbody" />
+
+    <form method="post" tal:attributes="action string:${here/portal_url}/${view/__name__}"
+          tal:condition="view/dados">
+
+    <div>
+      <table class="listing" id="table-list-protocolo">
+       <thead>
+         <tr>
+          <th></th>
+          <th>Número</th>
+          <th>Data</th>
+          <th>Assunto</th>
+          <th>Tipo de Documento</th>
+          <th>Situação</th>
+         </tr> 
+       </thead>
+      <tbody>
+        <tr tal:repeat="protocolo view/dados">
+          <td><input type="checkbox" name="protocolos:list"
+                     tal:attributes="value protocolo/id;
+		                     checked python:str(protocolo['id']) in request.get('protocolos', []) and 'checked' or None"/></td>
+          <td><a tal:content="protocolo/numero"
+                 tal:attributes="href protocolo/url"></a>
+          </td>
+          <td tal:content="protocolo/data_protocolo"></td>
+          <td tal:content="protocolo/assunto"></td>
+          <td tal:content="protocolo/tipodocumento"></td>
+          <td tal:content="protocolo/situacao"></td>
+        </tr>
+      </tbody>
+     </table>
+    </div>
+    
+    <metal:block  use-macro="context/@@ploneform-macros/actions" />
+
+    </form>
+
+    <p tal:condition="not: view/dados">
+      Você não tem nenhum protocolo para receber.
+    </p>
+
+    <div tal:replace="structure provider:plone.belowcontentbody" />
+
+    </tal:main-macro>
+</metal:main>
+
+</body>
+</html>

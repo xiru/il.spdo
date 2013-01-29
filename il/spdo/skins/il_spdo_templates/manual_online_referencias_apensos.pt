@@ -1,0 +1,79 @@
+<html>
+<body>
+
+ <div metal:use-macro="here/manual_online/macros/menu" />
+
+<H1>9. Referências e Apensos</H1>
+
+<div style="padding:5px;">
+<video tal:define="v string:http://ftp.interlegis.gov.br/pub/interlegis/produtos/spdo/spdo-5-pesquisa-referencias-apensos.ogv#t=338"
+       width="480" height="360" controls="controls">
+  <source tal:attributes="src v" type="video/ogg" />
+  Seu navegador não suporta o formato de vídeo Ogg Vorbis. Instale o 
+  <a href="http://www.videolan.org/vlc/" target="_blank">VLC media player</a>
+  para <a tal:attributes="href v">assistir o vídeo</a>.
+</video>
+</div>
+<div style="clear:both" />
+
+<P>O Sistema de Protocolo de Documentos – SPDO – possui algumas
+funcionalidades não triviais e que merecem especial atenção nesse
+manual. Dentre essas funcionalidades, a implementação de
+referências e apensos, demonstradas na parte final do último vídeo
+(vide item #2 desse manual), requerem esclarecimentos.</P>
+
+<P>	Independentemente
+do tipo de documento que esteja sendo protocolado, é comum existirem
+relações entre esses documentos. Por exemplo, quando protocolamos
+projetos de lei é normal existirem diversos projetos a respeito de
+um mesmo tema. Nesses casos é importante saber quais protocolos tem
+relação uns com os outros, de forma que a tramitação possa ser
+corretamente apreciada pelas áreas e que consultas aos detalhes dos
+protocolos citem outros protocolos relacionados. No entanto,
+referências não implicam necessariamente
+em tramitação conjunta, ou seja, efetuar
+a mesma tramitação para todos os protocolos relacionados. Para essa
+finalidade existem os apensos.</P>
+
+<P>	Apensos
+são destinados a “amarrar” um protocolo a outro (dito protocolo
+principal), fazendo com que o protocolo original (dito protocolo
+apensado) deixe de tramitar independentemente.</P>
+
+<P>	Enquanto um protocolo
+estiver apensado, quem tramita é o protocolo principal. As
+tramitações realizadas, assim como as modificações na situação
+do protocolo, observações e anexos devem ser considerados válidos
+tanto para o protocolo principal quanto para todos os demais
+protocolos apensados no protocolo principal.</P>
+
+<P>	As operações de
+apensar e desapensar são realizadas na opção “Apenso” da
+interface de detalhes do protocolo, ilustrada a seguir:</P>
+
+<P ALIGN=CENTER><IMG SRC="manual_online_pesquisa_html_12974ed4.png" NAME="figura34" ALIGN=BOTTOM WIDTH=302 HEIGHT=186 BORDER=0></P>
+
+<P>	Para
+desapensar um protocolo, voltando a permitir que o protocolo apensado
+tramite normalmente, deve-se seleciona a opção “nothing”
+(nenhum).</P>
+
+<P>	Um
+protocolo pode ser apensado apenas a um
+outro protocolo principal. Referências tem caráter múltiplo, ou
+seja, um protocolo pode estar relacionado a diversos
+outros protocolos. Essa regra deve-se ao fato dos apensos modificarem
+a forma como as atualizações e tramitação dos protocolos são
+processadas, uma vez que essas alterações são propagadas
+recursivamente em todos os protocolos apensados.</P>
+
+<P>	Não
+é permitida a existência de ciclos nos apensos, ou seja, se o
+protocolo A está apensado em B, o protocolo B não pode ser apensado
+em A. De igual forma, se o protocolo A está apensado em B e B está
+apensado em C, C não pode ser apensado em A. Essa validação evita
+que o processo de propagação da atualizações ocorra
+indefinidamente.</P>
+
+</BODY>
+</HTML>

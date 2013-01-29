@@ -1,0 +1,198 @@
+<html>
+<body>
+
+ <div metal:use-macro="here/manual_online/macros/menu" />
+
+<h1>4. Parametrização do Sistema</h1>
+
+<div style="padding:5px;">
+<video tal:define="v string:http://ftp.interlegis.gov.br/pub/interlegis/produtos/spdo/spdo-1-parametrizacao-do-sistema.ogv"
+       width="480" height="360" controls="controls">
+  <source tal:attributes="src v" type="video/ogg" />
+  Seu navegador não suporta o formato de vídeo Ogg Vorbis. Instale o 
+  <a href="http://www.videolan.org/vlc/" target="_blank">VLC media player</a>
+  para <a tal:attributes="href v">assistir o vídeo</a>.
+</video> 
+</div>
+<div style="clear:both" />
+
+<P>Antes
+do Sistema de Protocolo de Documentos – SPDO – ser utilizado “em
+produção” é necessário parametrizar algumas tabelas auxiliares
+e as configurações para envio de e-mail.</P>
+
+<P>O
+SPDO envia e-mails com lembretes de senhas e notificações de
+tramitação, avisando todas as pessoas interessadas quando um
+determinado protocolo tramitou. Para ajustar as Configurações de
+E-mail, acesse o link “/@@mail-controlpanel” e preencha o
+formulário a seguir:</P>
+
+<P ALIGN=CENTER><IMG SRC="manual_online_parametrizacao_html_mb603.png" NAME="figura1" ALIGN=BOTTOM WIDTH=491 HEIGHT=402 BORDER=0></P>
+
+<P>Abaixo
+são descritas as tabelas auxiliares do SPDO e como as mesmas devem
+ser parametrizadas.</P>
+
+<H2>4.1. Áreas</H2>
+
+<P>As áreas representam os setores, departamentos ou secretarias do
+organograma da instituição.</P>
+
+<P ALIGN=CENTER><IMG SRC="manual_online_parametrizacao_html_m27cae814.png" NAME="figura4" ALIGN=BOTTOM WIDTH=567 HEIGHT=283 BORDER=0>
+</P>
+
+<P>Cada área possui uma sigla (de até 20 caracteres) e um nome.
+Opcionalmente, cada área pode indicar qual é a sua área de chefia
+(campo de caráter apenas informativo e que não influencia no
+funcionamento do sistema).</P>
+
+<H2>4.2. Pessoas</H2>
+
+<P>As pessoas representam os usuários que interagem com o sistema, assim
+como os remetentes e destinatários de documentos protocolados,
+podendo ser pessoas físicas ou instituições (pessoas jurídicas).</P>
+
+<P ALIGN=CENTER><IMG SRC="manual_online_parametrizacao_html_44608381.png" NAME="figura5" ALIGN=BOTTOM WIDTH=567 HEIGHT=284 BORDER=0></P>
+
+<P>A
+tabela auxiliar de pessoas é um cadastro completo, dividido em 3
+abas, onde os únicos campos obrigatórios são: tipo da pessoa
+(Física ou Organização), nome e endereço de e-mail.</P>
+
+<P>Não
+podem existir duas pessoas com o mesmo endereço de e-mail, pois esse
+é utilizado como “usuário” ao efetuarmos a autenticação no
+sistema. Toda pessoa cadastrada pode acessar o sistema, desde que
+solicite a geração de uma senha acessando a opção “Esqueci
+minha senha” na página de login.</P>
+
+<H2>4.3. Responsáveis</H2>
+
+<P>Um responsável representa a pessoa que chefia uma área em uma
+determinada data. Normalmente, as áreas de uma instituição possuem
+muitas pessoas lotadas, mas um responsável (diretor, gerente,
+coordenador, etc). Como ao longo do tempo podem existir diferentes
+responsáveis, é necessário informar a partir de qual data a pessoa
+é responsável por uma área.</P>
+
+<P ALIGN=CENTER><IMG SRC="manual_online_parametrizacao_html_3ffdb479.png" NAME="figura6" ALIGN=BOTTOM WIDTH=567 HEIGHT=440 BORDER=0></P>
+
+<P>Uma
+pessoa só pode protocolar e tramitar documentos estando lotada em
+uma área e essa área deve possuir um responsável.</P>
+
+<P>A
+parametrização de responsáveis é utilizada para compor o
+histórico da tramitação, associando a cada operação qual é o
+responsável pela área para onde o protocolo tramitou, no momento em
+que a tramitação ocorreu.</P>
+
+<H2>4.4. Fluxos de Tramitação e
+Transições</H2>
+
+<P>	Os
+Fluxos de Tramitação e suas Transições representam os caminhos
+que a tramitação pode seguir, de acordo com o tipo de protocolo
+(Recebido, Expedido ou Interno) e o tipo de documento
+(parametrizável).</P>
+
+<P>Fluxos
+de Tramitação pode ser flexíveis ou não flexíveis (também
+chamados de fluxos rigorosos).</P>
+
+<P ALIGN=CENTER><IMG SRC="manual_online_parametrizacao_html_17398082.png" NAME="figura7" ALIGN=BOTTOM WIDTH=302 HEIGHT=410 BORDER=0></P>
+
+<P>	Fluxos
+não flexíveis exigem que:</P>
+
+<OL>
+	<LI><P>A
+	tramitação siga apenas transições definidas no fluxo;</P>
+	<LI><P>O
+	protocolo seja criado por uma área definida como área inicial de
+	uma das transições do fluxo.</P>
+</OL>
+
+<P>	Não
+existem transições da área para ela mesma, mas podem existir
+ciclos entre as áreas de um fluxo de tramitação (exemplo:
+protocolo ? contabilidade ? tesouraria ? contabilidade ?
+arquivo geral).</P>
+
+<P ALIGN=CENTER><IMG SRC="manual_online_parametrizacao_html_m6006c630.png" NAME="figura9" ALIGN=BOTTOM WIDTH=302 HEIGHT=384 BORDER=0></P>
+
+<P ALIGN=CENTER><IMG SRC="manual_online_parametrizacao_html_3a625416.png" NAME="figura8" ALIGN=BOTTOM WIDTH=567 HEIGHT=283 BORDER=0></P>
+
+<P>	Considera-se
+que um tipo de protocolo e documento sem fluxo de tramitação
+associado é regrado por um fluxo de tramitação flexível, podendo
+tramitar livremente e ser criado por qualquer área.</P>
+
+<H2>4.5. Tipos de Documentos</H2>
+
+<P>	Os
+Tipos de Documentos representam as categorias de documentos que podem
+ser protocolados (exemplo: carta, parecer, notificação, mandado,
+projeto, etc). O SPDO permite o protocolo e a tramitação de
+qualquer tipo de documento, em meio  impresso ou em qualquer formato
+digital.</P>
+
+<P ALIGN=CENTER><IMG SRC="manual_online_parametrizacao_html_m5306802e.png" NAME="figura10" ALIGN=BOTTOM WIDTH=567 HEIGHT=258 BORDER=0></P>
+
+<H2>4.6. Situações</H2>
+
+<P>	As
+situações representam os estados que os protocolos podem assumir no
+sistema (exemplo: protocolado, tramitando, em análise, arquivado,
+etc).</P>
+
+<P>Situações
+iniciais são aquelas permitidas no momento da criação do
+protocolo. Se todos os documentos protocolados devem ser cadastrados
+com uma determinada situação (exemplo: protocolado), apenas essa
+situação deve ser marcada como inicial.</P>
+
+<P>De
+forma semelhante, as situações finais são utilizadas para
+identificar quando o protocolo deve parar de tramitar (exemplo:
+arquivado, encerrado, etc). Quando um protocolo é alterado para uma
+situação final, a tramitação, assim como a adição de anexos e
+observações são bloqueados.</P>
+
+<P>Situações
+que não estejam marcadas como inicial nem como final tem apenas
+caráter informativo, não modificando o funcionamento do sistema.</P>
+
+<P ALIGN=CENTER><IMG SRC="manual_online_parametrizacao_html_m43f4ece5.png" NAME="figura11" ALIGN=BOTTOM WIDTH=567 HEIGHT=259 BORDER=0></P>
+
+<P>A
+correta classificação dos protocolos de acordo com sua situação,
+tipo de protocolo e tipo de documento é bastante importante. Essa
+classificação permite que sejam realizadas pesquisas específicas
+(utilizando situação, tipo de protocolo e tipo de documento como
+filtros), facilitando o gerenciamento de documentos da instituição.</P>
+
+<H2>4.7. Tipos de Entrega</H2>
+
+<P>	Os
+Tipos de Entrega representam as diversas formas que podem ser
+utilizadas pela instituição para dar retorno sobre um determinado
+protocolo (exemplo: SEDEX, carta registrada, e-mail, pessoalmente,
+etc).</P>
+
+<P ALIGN=CENTER><IMG SRC="manual_online_parametrizacao_html_m67540ba8.png" NAME="figura12" ALIGN=BOTTOM WIDTH=567 HEIGHT=275 BORDER=0></P>
+
+<P>A
+parametrização dos Tipos de Entrega deve ser feita de acordo com as
+práticas de cada instituição, representando as formas como os
+protocolos são “entregues” aos seus destinatários. Um protocolo
+pode ter diversos destinatários e é possível registrar um Tipo de
+Entrega diferente para um deles.</P>
+
+<P>	Os
+tipos de entrega não tem utilidade em protocolos recebidos ou
+internos.</P>
+
+</BODY>
+</HTML>

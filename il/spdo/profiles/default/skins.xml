@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<object name="portal_skins" allow_any="False" cookie_persistence="False"
+   default_skin="spdo">
+
+ <object name="il_spdo_templates"
+    meta_type="Filesystem Directory View"
+    directory="il.spdo:skins/il_spdo_templates"/>
+ <object name="il_spdo_css"
+    meta_type="Filesystem Directory View"
+    directory="il.spdo:skins/il_spdo_css"/>
+ <object name="il_spdo_js"
+    meta_type="Filesystem Directory View"
+    directory="il.spdo:skins/il_spdo_js"/>
+ <object name="il_spdo_images"
+    meta_type="Filesystem Directory View"
+    directory="il.spdo:skins/il_spdo_images"/>
+
+ <skin-path name="spdo" based-on="Sunburst Theme">
+  <layer name="il_spdo_templates" insert-after="custom"/>
+  <layer name="il_spdo_css"       insert-after="il_spdo_templates"/>
+  <layer name="il_spdo_js"        insert-after="il_spdo_css"/>
+  <layer name="il_spdo_images"    insert-after="il_spdo_js"/>
+ </skin-path>
+
+</object>

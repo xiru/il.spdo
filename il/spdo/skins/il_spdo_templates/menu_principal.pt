@@ -1,0 +1,83 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      tal:omit-tag="">
+
+<metal:block define-macro="portlet">
+
+<tal:block define="sc nocall:context/@@spdo/check"
+           condition="python:sc('acessar_add_protocolo') or sc('acessar_add_pessoa') or sc('acessar_search_protocolo_barra') or sc('acessar_print_etiquetas')">
+
+<dl class="portlet portletMenu"
+    i18n:domain="plone">
+
+    <dt class="portletHeader">
+        Menu Principal
+    </dt>
+
+    <dd class="portletItem"
+        tal:condition="python:sc('acessar_add_protocolo')">
+      <a tal:attributes="href string:${here/portal_url}/@@add-protocolo">Protocolar Documento</a>
+    </dd>
+
+    <dd class="portletItem"
+        tal:condition="python:sc('acessar_add_pessoa')">
+      <a id="add-pessoa" 
+         tal:attributes="href string:${here/portal_url}/@@add-pessoa">Cadastrar Pessoa</a>
+    </dd>
+
+    <dd class="portletItem"
+        tal:condition="python:sc('acessar_search_protocolo_barra')">
+      <a tal:attributes="href string:${here/portal_url}/@@search-protocolo-barra">Consultar Protocolo (Código de Barras)</a>
+    </dd>
+
+    <dd class="portletItem"
+        tal:condition="python:sc('acessar_search_protocolo')">
+      <a tal:attributes="href string:${here/portal_url}/@@search-protocolo">Pesquisar Protocolos</a>
+    </dd>
+
+    <dd class="portletItem"
+        tal:condition="python:sc('acessar_print_etiquetas')">
+      <a tal:attributes="href string:${here/portal_url}/@@print-etiquetas">Imprimir Etiquetas</a>
+    </dd>
+
+    <dd class="portletItem"
+        tal:condition="python:sc('acessar_ajuda')">
+      <a id="ajuda"
+         tal:attributes="href string:${here/portal_url}/ajuda">Ajuda</a>
+    </dd>
+
+</dl>
+
+<script tal:condition="python:sc('acessar_add_pessoa')">
+jQuery(function($) {
+  if (!jQuery.browser.msie ||
+      parseInt(jQuery.browser.version, 10) >= 7) {
+    $("#add-pessoa").prepOverlay({
+      subtype: 'ajax',
+      filter: '#content',
+      formselector: '#form',
+      noform: 'close',
+      closeselector: '#form-buttons-cancelar',
+    });
+  }
+});
+</script>
+
+<script>
+jQuery(function($) {
+  if (!jQuery.browser.msie ||
+      parseInt(jQuery.browser.version, 10) >= 7) {
+    $("#ajuda").prepOverlay({
+      subtype: 'iframe',
+      filter: 'body',
+    });
+  }
+});
+</script>
+
+</tal:block>
+
+</metal:block>
+
+</html>

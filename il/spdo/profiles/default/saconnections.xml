@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<connections>
+ <connection name="spdo" string="mysql://root:interlegis@localhost/spdo?charset=utf8" />
+</connections>

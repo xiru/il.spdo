@@ -1,0 +1,61 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      tal:omit-tag="">
+
+<metal:block define-macro="portlet">
+ 
+<tal:block define="portal python:context.portal_url.getPortalObject();
+                   isAnon python:portal.portal_membership.isAnonymousUser();
+		   sc nocall:context/@@spdo/check"
+           condition="not: isAnon">
+
+<dl class="portlet portletMenu"
+    i18n:domain="plone">
+
+    <dt class="portletHeader">
+        Menu Pessoal
+    </dt>
+
+    <dd class="portletItem"
+        tal:condition="python:sc('acessar_list_protocolo')">
+      <a tal:attributes="href string:${here/portal_url}/@@list-protocolo">Meus Protocolos</a>
+    </dd>
+
+    <dd class="portletItem"
+        tal:condition="python:sc('acessar_list_notificacao')">
+      <a tal:attributes="href string:${here/portal_url}/@@list-notificacao">Minhas Notificações</a>
+    </dd>
+
+    <dd class="portletItem">
+      <a id="trocar-senha"
+	 tal:attributes="href string:${here/portal_url}/@@change-password">Trocar Senha</a>
+    </dd>
+
+    <dd class="portletItem">
+      <a tal:attributes="href string:${here/portal_url}/logout">Sair</a>
+    </dd>
+
+</dl>
+
+
+<script>
+jQuery(function($) {
+  if (!jQuery.browser.msie ||
+      parseInt(jQuery.browser.version, 10) >= 7) {
+    $("#trocar-senha").prepOverlay({
+      subtype: 'ajax',
+      filter: '#content',
+      formselector: '#form',
+      noform: 'close',
+      closeselector: '#form-buttons-cancelar',
+    });
+  }
+});
+</script>
+
+</tal:block>
+
+</metal:block>
+
+</html>

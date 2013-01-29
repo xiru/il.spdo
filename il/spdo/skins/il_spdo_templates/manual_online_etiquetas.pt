@@ -1,0 +1,69 @@
+<html>
+<body>
+
+ <div metal:use-macro="here/manual_online/macros/menu" />
+
+ <h1>7. Etiquetas com Código de Barras</h1>
+
+<div style="padding:5px;">
+<video tal:define="v string:http://ftp.interlegis.gov.br/pub/interlegis/produtos/spdo/spdo-4-etiquetas-codigo-de-barra.ogv"
+       width="480" height="360" controls="controls">
+  <source tal:attributes="src v" type="video/ogg" />
+  Seu navegador não suporta o formato de vídeo Ogg Vorbis. Instale o 
+  <a href="http://www.videolan.org/vlc/" target="_blank">VLC media player</a>
+  para <a tal:attributes="href v">assistir o vídeo</a>.
+</video>
+</div>
+<div style="clear:both" />
+
+<P>	O
+Sistema de Protocolo de Documentos – SPDO – permite a emissão de
+etiquetas adesivas com códigos de barra. Essa etiquetas podem ser
+coladas nos documentos protocolados (ou nas pastas que guardam esses
+documentos) visando facilitar o processo de consulta dos detalhes e
+recebimento dos protocolos, utilizando um equipamento scanner de
+código de barras.</P>
+
+<P>	Os
+códigos de barra seguem o padrão <A target="_blank" 
+HREF="http://en.wikipedia.org/wiki/Code_128">Code 128</A>.
+Os formatos de etiquetas estão definidos diretamente no código
+fonte do SPDO 
+<A target="_blank"
+HREF="http://repositorio.interlegis.gov.br/il.spdo/trunk/il/spdo/etiquetas/pimaco.py">aqui</A>
+e são listados na tabela a seguir:</P>
+
+<P ALIGN=CENTER><IMG SRC="manual_online_etiquetas_html_m2c27516.gif" NAME="Objeto1" ALIGN=BOTTOM WIDTH=567 HEIGHT=255></P>
+
+<P ALIGN=CENTER><IMG SRC="manual_online_etiquetas_html_m632aa7c4.png" NAME="figura26" ALIGN=BOTTOM WIDTH=491 HEIGHT=408 BORDER=0></P>
+
+<P ALIGN=CENTER><IMG SRC="manual_online_etiquetas_html_m7d326250.png" NAME="figura27" ALIGN=BOTTOM WIDTH=491 HEIGHT=330 BORDER=0></P>
+
+<P>	Após
+selecionar o formato das etiquetas é necessário informar quantas
+páginas de etiquetas devem ser impressas com números de protocolos
+ainda não utilizados e/ou informar uma lista de protocolos e suas
+respectivas quantidades de etiquetas. 
+</P>
+
+<P>	Ao
+solicitar a emissão de etiquetas, o sistema gerará um arquivo em
+formato PDF que poderá impresso onde o usuário desejar.</P>
+
+<P>	A
+seguir, um exemplo de código de barras no formato 11 (papel tamanho
+A4, 11 linhas e 3 colunas):</P>
+
+<P ALIGN=CENTER><IMG SRC="manual_online_etiquetas_html_m21e916fd.png" NAME="figura28" ALIGN=BOTTOM WIDTH=567 HEIGHT=245 BORDER=0></P>
+
+<P>	Uma
+vez impressas e coladas aos documentos protocolados, as etiquetas de
+código de barra podem ser utilizadas no recebimento e consulta dos
+detalhes dos protocolos, como demonstrado a seguir:</P>
+
+<P><IMG SRC="manual_online_etiquetas_html_m2cb71ea4.png" NAME="figura29" ALIGN=BOTTOM WIDTH=567 HEIGHT=146 BORDER=0></P>
+
+<P><IMG SRC="manual_online_etiquetas_html_m625af7d7.png" NAME="figura30" ALIGN=BOTTOM WIDTH=480 HEIGHT=154 BORDER=0></P>
+
+</BODY>
+</HTML>

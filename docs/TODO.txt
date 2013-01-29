@@ -1,0 +1,28 @@
+Importante
+==========
+
+  - Tudo pronto :)
+ 
+Menos Importante
+================
+
+  - Omitir campo área no cadastro de pessoa para os usuários que não
+    possuem ROLE_GESTOR ou ROLE_ADMIN
+ 
+  - Validar a data de emissão no cadastro do protocolo, data de
+    entrega e data do responsável. Se informadas, não podem ser no
+    futuro. Apenas a data do responsável é obrigatória.
+
+  - Evitar overlay @@add-pessoa em contextos incorretos.
+
+  - Formatar visualização para impressão gerada pelo DataTables.
+
+  - Formatar datas.
+  
+  - i18n
+
+  - Proteção contra CSRF.
+
+  - Testes funcionais.
+
+  - Implementar bloqueio explícito de usuários no plugin PAS.

@@ -1,0 +1,20 @@
+Bug 1. O widget MultiFileFieldWidget, utilizado no upload de anexos,
+requer que o plugin Flash Player esteja instalado no navegador. Em
+condições incertas o widget não funciona. O problema foi detectado no
+Ubuntu 10.04 LTS versão Desktop, utilizando o Mozilla Firefox 8.0
+(instalado a partir do PPA). 
+
+Correção: modificar o il.spdo.config, alterando a variavel
+ENABLE_FLASH_MULTIFILE para False. Essa configuração irá desabilitar o
+widget e substituí-lo pelo widget padrão (de usabilidade inferior, mas
+sem a dependência do Flash)
+
+Bug 2. Os widgets AutocompleteFieldWidget e
+AutocompleteMultiFieldWidget, utilizados na seleção de pessoas e
+protocolos, não permitem a seleção de registros com valor 1. Esses
+widgets são baseados em um plugin jQuery considerado "deprecated", mas
+ainda não existe um widget atualizado que os substitua. 
+
+Correção: remover do banco de dados os registros da tabela pessoa e
+protocolo com id = 1.
+

@@ -1,0 +1,386 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="il.spdo">
+
+<body>
+
+<div metal:fill-slot="main"
+     tal:define="dados view/dados;
+                 sc nocall:context/@@spdo/check;
+                 editProtocolo python:sc('acessar_edit_protocolo', protocolo_id=request.id);
+                 addOrigem python:sc('acessar_add_pessoaorigem', protocolo_id=request.id);
+                 removeOrigem python:len(dados['origens']) > 1 and sc('acessar_remove_pessoaorigem', 
+                    protocolo_id=request.id);
+                 addDestino python:sc('acessar_add_pessoadestino', protocolo_id=request.id);
+                 editDestino python:dados['tipoprotocolo'] == 'Expedido' and sc('acessar_edit_pessoadestino', 
+                    protocolo_id=request.id);
+                 removeDestino python:len(dados['destinos']) > 1 and sc('acessar_remove_pessoadestino', 
+                    protocolo_id=request.id);
+                 exibirdespachos python:sc('visualizar_despachos', protocolo_id=request.id)">
+
+    <div tal:replace="structure provider:plone.abovecontenttitle" />
+
+    <h1 class="documentFirstHeading">Protocolo: <span 
+       tal:replace="dados/numero" /> de <span
+       tal:replace="dados/data_protocolo" /></h1>
+
+    <p>
+      <tal:block repeat="opcao dados/menu">
+        <a tal:attributes="href opcao/url;
+                           id python:opcao.get('id', None);
+                           class python:opcao.get('class', None)"
+           tal:content="opcao/titulo"></a>&nbsp;
+      </tal:block>
+    </p>
+
+    <div>
+      <div class="field">
+        <label for="form-widgets-tipoprotocolo" class="horizontal">
+          Tipo de Protocolo:
+        </label>
+        <span id="form-widgets-tipoprotocolo"
+              class="text-widget textline-field"
+              tal:content="dados/tipoprotocolo"></span>
+       </div>
+    </div>
+
+    <div>
+      <div class="field">
+        <label for="form-widgets-tipodocumento" class="horizontal">
+          Tipo de Documento:
+        </label>
+        <span id="form-widgets-tipodocumento"
+              class="text-widget textline-field"
+              tal:content="dados/tipodocumento"></span>
+       </div>
+    </div>
+
+    <div tal:condition="dados/numero_documento">
+      <div class="field">
+        <label for="form-widgets-numero-documento" class="horizontal">
+          Número do Documento:
+        </label>
+        <span id="form-widgets-numero-documento"
+              class="text-widget textline-field"
+              tal:content="dados/numero_documento"></span>
+       </div>
+    </div>
+
+    <div tal:condition="dados/data_emissao">
+      <div class="field">
+        <label for="form-widgets-data-emissao" class="horizontal">
+          Data de Emissão:
+        </label>
+        <span id="form-widgets-data-emissao"
+              class="text-widget textline-field"
+              tal:content="dados/data_emissao"></span>
+       </div>
+    </div>
+
+    <div>
+      <div class="field">
+        <label for="form-widgets-assunto" class="horizontal">
+          Assunto:
+        </label>
+        <span id="form-widgets-assunto"
+              class="text-widget textline-field"
+              tal:content="dados/assunto"></span>
+       </div>
+    </div>
+
+    <div>
+      <div class="field">
+        <label for="form-widgets-situacao" class="horizontal">
+          Situação:
+        </label>
+        <span id="form-widgets-situacao"
+              class="text-widget textline-field"
+              tal:content="dados/situacao"></span>
+       </div>
+    </div>
+
+    <div tal:condition="dados/referencias">
+      <div class="field">
+        <label for="form-widgets-referencias" class="horizontal">
+          Referências:
+        </label>
+        <span id="form-widgets-referencias"
+              class="text-widget textline-field">
+         <a tal:repeat="referencia dados/referencias"
+            tal:content="referencia/numero"
+            tal:attributes="href referencia/url"></a>
+        </span>
+       </div>
+    </div>
+
+    <div tal:condition="dados/referenciado_por">
+      <div class="field">
+        <label for="form-widgets-referenciado-por" class="horizontal">
+          Referenciado por:
+        </label>
+        <span id="form-widgets-referenciado-por"
+              class="text-widget textline-field">
+         <a tal:repeat="referencia dados/referenciado_por"
+            tal:content="referencia/numero"
+            tal:attributes="href referencia/url"></a>
+        </span>
+       </div>
+    </div>
+
+    <div tal:condition="dados/apensado">
+      <div class="field">
+        <label for="form-widgets-apensado-em" class="horizontal">
+          Apensado em:
+        </label>
+        <span id="form-widgets-apensado-em"
+              class="text-widget textline-field">
+         <a tal:content="dados/apensado/numero"
+            tal:attributes="href dados/apensado/url"></a>
+        </span>
+       </div>
+    </div>
+
+    <div tal:condition="dados/apensos">
+      <div class="field">
+        <label for="form-widgets-apensos" class="horizontal">
+          Apensos:
+        </label>
+        <span id="form-widgets-apensos"
+              class="text-widget textline-field">
+         <a tal:repeat="apenso dados/apensos"
+            tal:content="apenso/numero"
+            tal:attributes="href apenso/url"></a>
+        </span>
+       </div>
+    </div>
+
+    <div class="field">
+      <label for="table-list-pessoaorigem" class="horizontal"
+             tal:condition="addOrigem">
+        Origem (<a tal:attributes="href string:${here/portal_url}/@@add-pessoaorigem?protocolo_id=${dados/protocolo_id}">Adicionar</a>)
+      </label>
+      <label for="table-list-pessoaorigem" class="horizontal"
+             tal:condition="not: addOrigem">
+        Origem
+      </label>
+      <table class="listing" id="table-list-pessoaorigem" width="100%">
+       <thead>
+         <tr>
+          <th>Nome</th>
+          <th>Email</th>
+          <th tal:condition="removeOrigem"></th>
+         </tr> 
+       </thead>
+      <tbody>
+        <tr tal:repeat="pessoa dados/origens">
+          <td>
+             <a tal:content="pessoa/nome"
+                tal:attributes="href pessoa/url"
+                tal:condition="pessoa/url">
+             </a>
+             <span tal:content="pessoa/nome"
+                   tal:condition="not: pessoa/url" />
+          </td>
+          <td>
+            <span tal:replace="structure python:context.spamProtect(pessoa['email'])" />
+          </td>
+          <td tal:condition="removeOrigem">
+            <a tal:attributes="href pessoa/url-remove"><img
+               src="icone-remove.png" border="0" /></a>
+          </td>
+        </tr>
+      </tbody>
+     </table>
+    </div>
+
+    <div class="field">
+      <label for="table-list-pessoadestino" class="horizontal"
+             tal:condition="addDestino">
+        Destino (<a tal:attributes="href string:${here/portal_url}/@@add-pessoadestino?protocolo_id=${dados/protocolo_id}">Adicionar</a>)
+      </label>
+      <label for="table-list-pessoadestino" class="horizontal"
+             tal:condition="not: addDestino">
+        Destino
+      </label>
+      <table class="listing" id="table-list-pessoadestino" width="100%">
+       <thead>
+         <tr>
+          <th>Nome</th>
+          <th>Email</th>
+          <tal:block condition="editDestino">
+            <th>Tipo de Entrega</th>
+            <th>Data de Entrega</th>
+            <th>Objeto dos Correios</th>
+            <th></th>
+          </tal:block>
+          <th tal:condition="removeDestino"></th>
+         </tr> 
+       </thead>
+      <tbody>
+        <tr tal:repeat="pessoa dados/destinos">
+          <td>
+             <a tal:content="pessoa/nome"
+                tal:attributes="href pessoa/url"
+                tal:condition="pessoa/url">
+             </a>
+             <span tal:content="pessoa/nome"
+                   tal:condition="not: pessoa/url" />
+          </td>
+          <td>
+            <span tal:replace="structure python:context.spamProtect(pessoa['email'])" />
+          </td>
+          <tal:block condition="editDestino">
+            <td tal:content="pessoa/tipoentrega"></td>
+            <td tal:content="pessoa/data_entrega"></td>
+            <td tal:content="pessoa/objeto_correios"></td>
+            <td>
+              <a tal:attributes="href pessoa/url-edit"><img
+                 src="icone-edit.png" border="0" /></a>
+            </td>
+          </tal:block>
+          <td tal:condition="removeDestino">
+            <a tal:attributes="href pessoa/url-remove"><img
+               src="icone-remove.png" border="0" /></a>
+          </td>
+        </tr>
+      </tbody>
+     </table>
+    </div>
+
+    <div class="field" style="margin-top: 2em"
+         tal:condition="dados/observacoes">
+      <dl class="collapsible">
+        <dt class="collapsibleHeader">Observações</dt>
+        <dd class="collapsibleContent">
+
+    <tal:block repeat="observacao dados/observacoes">
+      <div class="commentDate">
+        <p><span tal:content="observacao/data_observacao" />
+           <a tal:attributes="href observacao/url-edit"
+              tal:condition="observacao/url-edit"
+              class="overlay-add-edit-observacao"><img
+              src="icone-edit.png" border="0" /></a>
+           <a tal:attributes="href observacao/url-remove"
+              tal:condition="observacao/url-remove"><img
+              src="icone-remove.png" border="0" /></a></p>
+      </div>
+      <div class="commentBody">
+        <p tal:content="observacao/texto" />
+      </div>
+    </tal:block>
+    
+        </dd>
+      </dl>
+    </div>
+
+    <div class="field" style="margin-top: 2em"
+         tal:condition="dados/anexos">
+      <dl class="collapsible">
+        <dt class="collapsibleHeader">Anexos</dt>
+        <dd class="collapsibleContent">
+
+      <table class="listing" id="table-list-anexo" width="100%">
+       <thead>
+         <tr>
+          <th>Nome do Arquivo</th>
+          <th>Data</th>
+          <th>Tamanho</th>
+          <th></th>
+         </tr> 
+       </thead>
+      <tbody>
+        <tr tal:repeat="anexo dados/anexos">
+          <td><a target="_blank"
+                 tal:content="anexo/arquivo"
+                 tal:attributes="href anexo/download_url"></a></td>
+          <td tal:content="anexo/data_anexo"></td>
+          <td tal:content="anexo/tamanho"></td>
+          <td><a tal:attributes="href anexo/url-remove"
+                 tal:condition="anexo/url-remove"><img
+                 src="icone-remove.png" border="0" /></a></td>
+        </tr>
+      </tbody>
+     </table>
+    
+        </dd>
+      </dl>
+    </div>
+
+    <div class="field" style="margin-top: 2em"
+         tal:condition="dados/tramites">
+      <dl class="collapsible">
+        <dt class="collapsibleHeader">Tramitação</dt>
+        <dd class="collapsibleContent">
+
+      <table class="listing" id="table-list-tramite" width="100%">
+       <thead>
+         <tr>
+          <th>Disponibilização</th>
+          <th>Recebimento</th>
+          <th>Área</th>
+          <th>Responsável</th>
+          <th tal:condition="exibirdespachos">Despacho</th>
+         </tr> 
+       </thead>
+      <tbody>
+        <tr tal:repeat="tramite dados/tramites">
+          <td tal:content="tramite/data_disponibilizacao"></td>
+          <td tal:content="tramite/data_recebimento"></td>
+          <td tal:content="tramite/area"></td>
+          <td>
+             <a tal:content="tramite/nome_responsavel"
+                tal:attributes="href tramite/url-responsavel"
+                tal:condition="tramite/url-responsavel">
+             </a>
+             <span tal:content="tramite/nome_responsavel"
+                   tal:condition="not: tramite/url-responsavel" />
+          </td>
+          <td tal:content="tramite/despacho"
+              tal:condition="exibirdespachos"></td>
+        </tr>
+      </tbody>
+     </table>
+    
+        </dd>
+      </dl>
+    </div>
+
+<script tal:condition="editProtocolo">
+jQuery(function($) {
+  if (!jQuery.browser.msie ||
+      parseInt(jQuery.browser.version, 10) >= 7) {
+    $("#overlay-edit-protocolo").prepOverlay({
+      subtype: 'ajax',
+      filter: '#content',
+      formselector: '#form',
+      noform: 'reload',
+      closeselector: '#form-buttons-cancelar',
+    });
+  }
+});
+</script>
+
+<script>
+jQuery(function($) {
+  if (!jQuery.browser.msie ||
+      parseInt(jQuery.browser.version, 10) >= 7) {
+    $(".overlay-add-edit-observacao").prepOverlay({
+      subtype: 'ajax',
+      filter: '#content',
+      formselector: '#form',
+      noform: 'reload',
+      closeselector: '#form-buttons-cancelar',
+    });
+  }
+});
+</script>
+
+    <div tal:replace="structure provider:plone.belowcontentbody" />
+
+</div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      tal:omit-tag="">
+
+<metal:block define-macro="portlet">
+
+<tal:block define="portal python:context.portal_url.getPortalObject();
+                   checkPermission python:portal.portal_membership.checkPermission"
+           condition="python:checkPermission('Manage portal', portal)">
+
+<dl class="portlet portletMenu"
+    i18n:domain="plone">
+
+    <dt class="portletHeader">
+      Tabelas Auxiliares
+    </dt>
+
+    <dd class="portletItem">
+      <a tal:attributes="href string:${here/portal_url}/@@list-area">Áreas</a>
+    </dd>
+
+    <dd class="portletItem">
+      <a tal:attributes="href string:${here/portal_url}/@@list-pessoa">Pessoas</a>
+    </dd>
+
+    <dd class="portletItem">
+      <a tal:attributes="href string:${here/portal_url}/@@list-responsavel">Responsáveis</a>
+    </dd>
+
+    <dd class="portletItem">
+      <a tal:attributes="href string:${here/portal_url}/@@list-fluxo">Fluxos de Tramitação</a>
+    </dd>
+
+    <dd class="portletItem">
+      <a tal:attributes="href string:${here/portal_url}/@@list-tipodocumento">Tipos de Documentos</a>
+    </dd>
+
+    <dd class="portletItem">
+      <a tal:attributes="href string:${here/portal_url}/@@list-situacao">Situações</a>
+    </dd>
+
+    <dd class="portletItem">
+      <a tal:attributes="href string:${here/portal_url}/@@list-tipoentrega">Tipos de Entregas</a>
+    </dd>
+
+    <dd class="portletItem">
+      <a tal:attributes="href string:${here/portal_url}/@@overview-controlpanel">Configurações do Site</a>
+    </dd>
+
+</dl>
+
+</tal:block>
+
+</metal:block>
+
+</html>

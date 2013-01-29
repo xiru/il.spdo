@@ -1,0 +1,86 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="il.spdo">
+
+<body>
+
+<metal:main fill-slot="main">
+    <tal:main-macro metal:define-macro="main">
+
+    <div tal:replace="structure provider:plone.abovecontenttitle" />
+
+    <h1 class="documentFirstHeading">Listagem das Transições</h1>
+
+    <p class="documentDescription">Fluxo de Tramitação: <a 
+       tal:attributes="href view/dados_fluxo/url"
+       tal:content="view/dados_fluxo/nome"></a></p>
+
+    <p><a tal:attributes="href string:${view/add_url}">Adicionar</a></p>
+
+    <div tal:replace="structure provider:plone.abovecontentbody" />
+
+    <div>
+      <table class="listing" id="table-list-transicao" width="100%">
+       <thead>
+         <tr>
+          <th>Transição Inicial</th>
+          <th>Área de Origem</th>
+          <th>Área de Destino</th>
+          <th></th>
+         </tr> 
+       </thead>
+      <tbody>
+        <tr tal:repeat="transicao view/dados">
+          <td tal:content="python:transicao['inicial'] and 'X' or None"></td>
+          <td><a tal:content="transicao/area_origem"
+                 tal:attributes="href transicao/url-area-origem"></a></td>
+          <td><a tal:content="transicao/area_destino"
+                 tal:attributes="href transicao/url-area-origem"></a></td>
+          <td><a tal:attributes="href transicao/url-remove"><img
+	         src="icone-remove.png" border="0" /></a></td>
+        </tr>
+      </tbody>
+     </table>     
+    </div>
+
+    <script type="text/javascript">
+      $(document).ready( function () {
+        $('#table-list-transicao').dataTable( {
+          "sDom": 'T<"clear">lfrtip',
+          "oTableTools": {
+          "sSwfPath": "copy_cvs_xls_pdf.swf",
+          "aButtons": [
+            {
+             "sExtends": "copy",
+             "sButtonText": "Copiar"
+            },
+            {
+              "sExtends": "csv",
+              "sButtonText": "CSV"
+            },
+            {
+              "sExtends": "pdf",
+              "sButtonText": "PDF",
+              "sPdfOrientation": "landscape",
+              "sPdfMessage": "Transições",
+            },
+            {
+              "sExtends": "print",
+              "sButtonText": "Imprimir"
+            },
+          ] }
+        } );
+      } );
+    </script>
+
+    <div tal:replace="structure provider:plone.belowcontentbody" />
+
+    </tal:main-macro>
+</metal:main>
+
+</body>
+</html>

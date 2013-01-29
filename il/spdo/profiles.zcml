@@ -1,0 +1,22 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    i18n_domain="il.spdo">
+
+  <genericsetup:registerProfile
+      name="default"
+      title="SPDO Default Profile"
+      directory="profiles/default"
+      description='Extension profile for the SPDO Application'
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
+  <genericsetup:importStep
+      name="il.spdo.various"
+      title="spdo: miscellaneous import steps"
+      description="Various import steps that are not handled by GS import/export handlers."
+      handler="il.spdo.setuphandlers.setupVarious">
+    <depends name="content"/>
+  </genericsetup:importStep>
+
+</configure>

@@ -1,0 +1,163 @@
+<html>
+<body>
+
+ <div metal:use-macro="here/manual_online/macros/menu" />
+
+ <h1>6. Tramitação de Protocolos</h1>
+
+<div style="padding:5px;">
+ <video tal:define="v string:http://ftp.interlegis.gov.br/pub/interlegis/produtos/spdo/spdo-3-tramitando-protocolos.ogv"
+       width="480" height="360" controls="controls">
+  <source tal:attributes="src v" type="video/ogg" />
+  Seu navegador não suporta o formato de vídeo Ogg Vorbis. Instale o 
+  <a href="http://www.videolan.org/vlc/" target="_blank">VLC media player</a>
+  para <a tal:attributes="href v">assistir o vídeo</a>.
+</video>
+</div>
+<div style="clear:both" />
+
+<P>	Outra funcionalidade
+importante do Sistema de Protocolo de Documentos – SPDO – é a
+tramitação, ação que ocorre sempre que for necessário enviar um
+protocolo de uma área para outra área (por definição, não existe
+tramitação dentro de uma mesma área).</P>
+
+<P>	A seguir são
+ilustradas as diversas formas que podem ser adotadas para tramitar um
+protocolo.</P>
+
+<H2>6.1. Tramitação de Envio</H2>
+
+<P>	Logo após sua
+criação, considera-se que o protocolo começa a tramitar na área
+que o cadastrou. Dependendo da estrutura organizacional de cada
+instituição, os protocolos podem ser criados de forma centralizada
+(numa área de protocolo central) ou de forma descentralizada,
+controlada por fluxos de tramitação não flexíveis (mais
+informações sobre fluxos de tramitação podem ser obtidas no item
+#4.4 desse documento).</P>
+
+<P>	Desde que um protocolo
+esteja tramitando em uma área, ou seja, tenha sido criado ou
+recebido pela área e não esteja em uma situação final, qualquer
+usuário lotado nessa área pode tramitá-lo para outra área. Essa
+tramitação pode ser feita acessando a opção “Tramitar”,
+listada na parte superior dos detalhes do protocolo, como ilustrado a
+seguir.</P>
+
+<P ALIGN=CENTER><IMG SRC="manual_online_tramitacao_html_6e9e831.png" NAME="figura19" ALIGN=BOTTOM WIDTH=567 HEIGHT=337 BORDER=0></P>
+
+<P>	A
+tramitação de envio requer que a área para onde o protocolo deve
+ser enviado seja informada. Pode ser selecionada mais de uma área
+para envio, ocorrendo nesse caso a tramitação de cópias.</P>
+
+<P>	De
+acordo com o item #2.1.5.9 do Relatório de Entrega de nº 1, sobre
+“Descrição de Programas, Casos de Uso, Interfaces de Usuário e
+Modelos de Dados”, temos:</P>
+
+<P>	Geralmente
+considera-se que os documentos protocolados são únicos e seguem um
+fluxo de tramitação sequencial. No entanto essa “regra” costuma
+ter exceções. Por exemplo, durante a tramitação de um projeto
+podem ser necessários pareceres de diversas áreas. Considerando que
+os pareceres são independentes, o projeto pode ser copiado e
+distribuído a todas as áreas interessadas, passando a tramitar em
+paralelo. A principal vantagem da tramitação de cópias é a
+rapidez, pois uma área não precisa esperar pela resposta das
+outras.</P>
+
+<P>	Além
+de selecionar as áreas de destino, a tramitação de envio permite
+que seja informado um despacho (opcional), destinado a descrever a
+ação que deve ser tomada pela área de destino para que a
+tramitação prossiga.</P>
+
+<P>	Por
+fim, também é possível adicionar um ou mais anexos ao protocolo no
+momento da tramitação. Essa opção pode ser especialmente útil
+para agilizar o processo de tramitação, uma vez que a área poderá
+adicionar um parecer sobre o protocolo, definir um despacho e enviar
+o protocolo para outra área de uma só vez.</P>
+
+<P>	Após
+a tramitação de envio ser realizada, os detalhes do protocolo
+passam a listar a data e hora de disponibilização do protocolo para
+cada uma das áreas de destino, com a data e hora de recebimento em
+branco. Essa situação evidencia que o protocolo foi enviado, mas
+ainda não foi recebido pelo destinatário, como ilustrado na imagem
+a seguir. 
+</P>
+
+<P ALIGN=CENTER><IMG SRC="manual_online_tramitacao_html_488d7cb3.png" NAME="figura20" ALIGN=BOTTOM WIDTH=567 HEIGHT=107 BORDER=0></P>
+
+<P>	Outra
+forma de realizar a tramitação de envio é acessando a opção
+“Envio” na portlet “Tramitação”.  O diferencial dessa opção
+é a possibilidade de selecionar diversos protocolos dentre aqueles
+que foram criados ou recebidos pela área onde o usuário está
+lotado e enviá-los de uma só vez.</P>
+
+<P ALIGN=CENTER><IMG SRC="manual_online_tramitacao_html_m7e3fc376.png" NAME="figura25" ALIGN=BOTTOM WIDTH=567 HEIGHT=435 BORDER=0></P>
+
+<H2>6.2. Tramitação de Recebimento</H2>
+
+<P>	A
+tramitação de recebimento é destinada ao registro do recebimento
+de um protocolo por uma área. Esse recebimento deve ser registrado
+no momento em que a área recebe os documentos do protocolo, algo que
+pode demorar a ocorrer quando os documentos estiverem em formato
+“papel” e tiverem que ser transportados de uma área para outra.</P>
+
+<P>	A
+tramitação de recebimento pode ser realizada acessando a opção
+“Recebimento” na portlet “Tramitação”. A seguir é
+ilustrada essa interface de recebimento de protocolos, onde é
+possível selecionar quais protocolos devem ser recebidos, dentre
+aqueles que tenham sido enviados por outras áreas e ainda não
+tenham seu recebimento registrado.</P>
+
+<P ALIGN=CENTER><IMG SRC="manual_online_tramitacao_html_3d4d6a93.png" NAME="figura21" ALIGN=BOTTOM WIDTH=567 HEIGHT=157 BORDER=0></P>
+
+<P>	Depois
+do recebimento do protocolo, a data e hora de recebimento passam a
+ser exibidas nos detalhes do protocolo, como ilustrado a seguir:</P>
+
+<P ALIGN=CENTER><IMG SRC="manual_online_tramitacao_html_m1880e717.png" NAME="figura22" ALIGN=BOTTOM WIDTH=567 HEIGHT=122 BORDER=0></P>
+
+<P>	Uma
+vez recebido, o sistema passa a considerar que o protocolo tramita na
+área que o recebeu. Isso significa que os usuários lotados nessa
+área poderão alterar o protocolo, adicionar observações, anexos e
+tramitar o protocolo novamente, enviando-o para outra área, como
+descrito no item #6.1 desse documento.</P>
+
+<P ALIGN=CENTER><IMG SRC="manual_online_tramitacao_html_m692bcdc5.png" NAME="figura23" ALIGN=BOTTOM WIDTH=567 HEIGHT=153 BORDER=0></P>
+
+<P>	Novas
+tramitações criam um ciclo de envios e recebimentos, representando
+o processo de tramitação como um todo. A tramitação termina
+apenas no momento que uma área modifica a situação do protocolo
+para uma situação final (exemplo: arquivado).</P>
+
+<H2>6.3. Tramitação de
+Recuperação</H2>
+
+<P>	Além
+de tramitações de envio e recebimento, o SPDO suporta as
+tramitações de recuperação, destinadas a “recuperar” envios
+de protocolos que tenham sido feitos por engano, desde que esses
+protocolos ainda não tenham sido recebidos.</P>
+
+<P>	A
+tramitação de recuperação pode ser realizada acessando a opção
+“Recuperação” na portlet “Tramitação”. A seguir é
+ilustrada essa interface de recuperação de protocolos, onde é
+possível selecionar quais protocolos enviados e ainda não recebidos
+devem ser recuperados.</P>
+
+<P ALIGN=CENTER><IMG SRC="manual_online_tramitacao_html_m6267fd24.png" NAME="figura24" ALIGN=BOTTOM WIDTH=567 HEIGHT=147 BORDER=0></P>
+
+</BODY>
+</HTML>

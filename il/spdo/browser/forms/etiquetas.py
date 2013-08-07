@@ -43,6 +43,8 @@ class EtiquetasPrintForm(form.SchemaForm):
         tipo = data['formato']
         formato = FORMATOS_SUPORTADOS[tipo]
 
+        p = []
+
         # protocolos não utilizados
         paginas = self.request.paginas
         if paginas:
@@ -53,7 +55,6 @@ class EtiquetasPrintForm(form.SchemaForm):
             max_seq = session.bind.execute('SELECT max(p.seq) from protocolo p where p.ano = %d' % ano).fetchone()[0]
             seq = max_seq is None and 1 or max_seq + 1            
 
-            p = []
             for pagina in range(paginas):
                 l = []
                 for linha in range(formato['Linhas']):

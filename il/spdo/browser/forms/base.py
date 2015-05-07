@@ -85,7 +85,19 @@ class EditForm(form.SchemaForm):
         go('show-'+vs(self.klass), id=self.rec_id())
 
     def rec_id(self):
-        return self.request.get('id', self.request.get('form.widgets.id', None))
+
+        ret = self.request.get('id', self.request.get('form.widgets.id', None))
+
+        # Bug reportado pela AL-RO: por algum motivo, o widget padrão
+        # do schema.Int adiciona separador de milhar. Como utilizo
+        # campos int para reter os id nos formularios de edição faz-se
+        # necessário limpar os "." Nas views o id é passado por GET e
+        # esse bug, obviamente, não se manifesta.
+
+        if ret is not None:
+            ret = ret.replace('.', '')
+
+        return ret
 
     @button.buttonAndHandler(_(u'Salvar'), name='salvar')
     def handleSalvar(self, action):
@@ -154,7 +166,19 @@ class ShowForm(form.SchemaForm):
         go('edit-'+vs(self.klass), id=self.rec_id())
 
     def rec_id(self):
-        return self.request.get('id', self.request.get('form.widgets.id', None))
+
+        ret = self.request.get('id', self.request.get('form.widgets.id', None))
+
+        # Bug reportado pela AL-RO: por algum motivo, o widget padrão
+        # do schema.Int adiciona separador de milhar. Como utilizo
+        # campos int para reter os id nos formularios de edição faz-se
+        # necessário limpar os "." Nas views o id é passado por GET e
+        # esse bug, obviamente, não se manifesta.
+
+        if ret is not None:
+            ret = ret.replace('.', '')
+
+        return ret
 
     @button.buttonAndHandler(_(u'Editar'), name='editar')
     def handleEditar(self, action):

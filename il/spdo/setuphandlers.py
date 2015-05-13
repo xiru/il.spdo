@@ -5,6 +5,7 @@ from Products.CMFCore.utils import getToolByName
 
 from il.spdo.pas import SPDOPASPlugin
 
+
 def installPASPlugin(portal, name='spdo_plugin'):
     out=StringIO()
     acl = portal['acl_users']
@@ -23,12 +24,15 @@ def installPASPlugin(portal, name='spdo_plugin'):
                     plugins._plugins[interface] = tuple(active)
         return out.getvalue()
 
+
 def setupVarious(context):
     if context.readDataFile('il.spdo_various.txt') is None:
         return
     portal = context.getSite()
     installPASPlugin(portal)
-    portal.manage_delObjects(['news', 'events', 'Members'])
+    for obj in portal.objectIds():
+        if obj in ['news', 'events', 'Members']:
+            portal.manage_delObjects([obj,])
     wft = getToolByName(portal, 'portal_workflow')
     obj = getattr(portal, 'front-page')
     wft.doActionFor(obj, action='publish')

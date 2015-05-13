@@ -1,0 +1,8 @@
+<registry>
+    <records interface="il.spdo.sapl.ISAPLSettings" prefix="sapl">
+      <value key="use_sapl"></value>
+      <value key="end_sapl"></value>
+      <value key="user_sapl_login"></value>
+      <value key="user_sapl_senha"></value>
+    </records>
+</registry>

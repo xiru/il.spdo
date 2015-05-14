@@ -12,6 +12,7 @@ from il.spdo.config import DEFAULT_DSN
 from il.spdo.log import logger
 from il.spdo.history_meta import ZopeVersionedExtension
 
+
 class SPDOEngineFactory(EngineFactory):
 
     def configuration(self):
@@ -33,10 +34,12 @@ provideUtility(SPDOEngineGlobalUtility, provides=IEngineFactory, name=u'spdo_eng
 #SPDOGloballyScopedSession = GloballyScopedSession(u'spdo_engine', extension=ZopeVersionedExtension())
 #provideUtility(SPDOGloballyScopedSession, provides=IScopedSession, name=u'spdo_session')
 
+
 def ScopeID():
     urltool = getToolByName(getSite(), 'portal_url')
     obj = urltool.getPortalObject()
     return '-'.join(obj.getPhysicalPath()[1:])
+
 
 # SiteScopedSession - um banco de dados por site
 class SPDOSiteScopedSession(SiteScopedSession):

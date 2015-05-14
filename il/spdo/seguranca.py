@@ -59,6 +59,7 @@ CONFIG = {
     'acessar_show_pessoa': ('privilegio_admin', 'privilegio_operador'),
     'acessar_show_protocolo': ('privilegio_admin', 'privilegio_usuario'),
     'acessar_ws_add_protocolo': ('privilegio_operador',),
+    'acessar_ws_add_apenso': ('privilegio_operador',),
     'ciclo_apenso': ('protocolo_apenso_ciclo',),
     'fluxo_rigoroso_area_inicial': ('protocolo_fluxo_area_inicial',),
     'fluxo_rigoroso': ('protocolo_fluxo',),
